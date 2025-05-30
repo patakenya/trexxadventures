@@ -151,18 +151,18 @@
             <a href="index.html" class="text-3xl font-['Pacifico'] text-primary">Trexx</a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="index.html" class="font-medium text-gray-800 hover:text-primary">Home</a>
-                <div class="relative group">
-                    <button class="font-medium text-gray-800 hover:text-primary flex items-center border-b-2 border-primary">
-                        Tours
-                        <i class="ri-arrow-down-s-line ml-1"></i>
-                    </button>
-                    <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden group-hover:block">
-                        <a href="tours.html#safaris" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Wildlife Safaris</a>
-                        <a href="tours.html#hiking" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Hiking & Trekking</a>
-                        <a href="tours.html#cultural" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cultural Tours</a>
-                        <a href="tours.html#team" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Team Adventures</a>
-                    </div>
+               <div class="relative group flex items-center">
+                <a href="tours.html" class="font-medium text-gray-800 hover:text-primary">Tours</a>
+                <span class="dropdown-toggle ml-1 cursor-pointer">
+                    <i class="ri-arrow-down-s-line text-gray-800 hover:text-primary"></i>
+                </span>
+                <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden group-hover:block top-full z-10">
+                    <a href="tours.html#safaris" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Wildlife Safaris</a>
+                    <a href="tours.html#hiking" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Hiking & Trekking</a>
+                    <a href="tours.html#cultural" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cultural Tours</a>
+                    <a href="tours.html#team" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Team Adventures</a>
                 </div>
+            </div>
                 <a href="plan.html" class="font-medium text-gray-800 hover:text-primary">Plan Your Adventures</a>
                 <a href="gallery.html" class="font-medium text-gray-800 hover:text-primary">Gallery</a>
                 <a href="blog.html" class="font-medium text-gray-800 hover:text-primary">Blog</a>
@@ -226,6 +226,7 @@
                 <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition active" data-filter="all">All</button>
                 <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="safaris">Wildlife Safaris</button>
                 <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="hiking">Hiking & Trekking</button>
+                <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="coastal">Coastal Tours</button>
                 <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="cultural">Cultural Tours</button>
                 <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="team">Team Adventures</button>
             </div>
@@ -256,7 +257,7 @@
                         <a href="contact.html?package=amboseli-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="safaris">
-                        <img src="https://readdy.ai/api/search-image?query=Lake%20Nakuru%20National%20Park%20in%20Kenya%20with%20thousands%20of%20pink%20flamingos%20lining%20the%20shoreline%2C%20creating%20a%20stunning%20pink%20border%20around%20the%20blue%20waters%20of%20the%20lake.%20The%20image%20shows%20acacia%20trees%20in%20the%20background%2C%20a%20clear%20blue%20sky%2C%20and%20possibly%20other%20wildlife%20like%20rhinos%20or%20buffalo%20in%20the%20distance.%20The%20composition%20captures%20the%20unique%20ecosystem%20and%20famous%20flamingo%20spectacle%20of%20this%20Kenyan%20national%20park.&width=400&height=300&seq=12352&orientation=landscape" alt="Flamingos at Lake Nakuru" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/nakuru.png" alt="Flamingos at Lake Nakuru" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Lake Nakuru Safari</h3>
                         <p class="text-gray-600 mb-4">1-day safari with flamingo flocks and rhino spotting.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -267,7 +268,7 @@
                         <a href="contact.html?package=lake-nakuru-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="safaris">
-                        <img src="https://readdy.ai/api/search-image?query=Nairobi%20National%20Park%20in%20Kenya%20with%20wildlife%20such%20as%20giraffes%20and%20zebras%20roaming%20freely%20against%20a%20backdrop%20of%20Nairobi%20city%20skyline.%20The%20image%20captures%20the%20unique%20juxtaposition%20of%20urban%20and%20wild%20landscapes%20with%20natural%20lighting%20and%20a%20professional%20composition%20highlighting%20the%20parks%20accessibility%20from%20Tatu%20City.&width=400&height=300&seq=12361&orientation=landscape" alt="Giraffes in Nairobi National Park with city skyline" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/girraffe.png" alt="Giraffes in Nairobi National Park with city skyline" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Nairobi National Park Safari</h3>
                         <p class="text-gray-600 mb-4">Half-day safari near Tatu City with city skyline views.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -278,7 +279,18 @@
                         <a href="contact.html?package=nairobi-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="safaris">
-                        <img src="https://readdy.ai/api/search-image?query=Tsavo%20East%20National%20Park%20in%20Kenya%20with%20red%20elephants%20covered%20in%20dust%20roaming%20across%20vast%20plains%2C%20rugged%20landscapes%2C%20and%20the%20Galana%20River%20in%20the%20background.%20The%20image%20captures%20the%20wild%2C%20untamed%20beauty%20of%20Tsavo%20with%20natural%20lighting%20and%20a%20professional%20composition.&width=400&height=300&seq=12362&orientation=landscape" alt="Red elephants in Tsavo East" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/tsavo.png" alt="Red elephants in Tsavo East" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <h3 class="text-xl font-bold mb-2">Tsavo East & West Safari</h3>
+                        <p class="text-gray-600 mb-4">4-day safari with red elephants and vast landscapes.</p>
+                        <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                            <li><i class="ri-time-line mr-2"></i>Duration: 4 days</li>
+                            <li><i class="ri-group-line mr-2"></i>Group: 2–8</li>
+                            <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 180,000 pp</li>
+                        </ul>
+                        <a href="contact.html?package=tsavo-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+                    </div>
+                    <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="safaris">
+                        <img src="images/zebra.png" alt="Red elephants in Tsavo East" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Tsavo East & West Safari</h3>
                         <p class="text-gray-600 mb-4">4-day safari with red elephants and vast landscapes.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -295,7 +307,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-8">Hiking & Trekking</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="hiking">
-                        <img src="https://readdy.ai/api/search-image?query=Mount%20Kenya%20national%20park%20with%20snow-capped%20peaks%20rising%20above%20lush%20forests%20and%20alpine%20meadows%2C%20clear%20blue%20sky%20with%20wispy%20clouds%2C%20and%20a%20hiking%20trail%20visible%20in%20the%20foreground.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20majestic%20beauty%20of%20Africas%20second-highest%20mountain.&width=400&height=300&seq=12350&orientation=landscape" alt="Mount Kenya snow-capped peaks" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/mtkenya.png" alt="Mount Kenya snow-capped peaks" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Mount Kenya Trek</h3>
                         <p class="text-gray-600 mb-4">4-day trek to Point Lenana with expert guides and alpine views.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -306,7 +318,7 @@
                         <a href="contact.html?package=mount-hiking" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="hiking">
-                        <img src="https://readdy.ai/api/search-image?query=Aberdare%20Ranges%20in%20Kenya%20with%20lush%20green%20forests%2C%20waterfalls%2C%20and%20misty%20peaks.%20The%20image%20shows%20a%20hiking%20trail%20winding%20through%20dense%20vegetation%20with%20a%20clear%20view%20of%20the%20rugged%20terrain%20and%20natural%20beauty%20of%20this%20Kenyan%20highland%20destination.&width=400&height=300&seq=12363&orientation=landscape" alt="Waterfalls in Aberdare Ranges" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/aberdare.png" alt="Waterfalls in Aberdare Ranges" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Aberdare Ranges Hike</h3>
                         <p class="text-gray-600 mb-4">2-day hike through forests and waterfalls.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -317,7 +329,7 @@
                         <a href="contact.html?package=aberdare-hike" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="hiking">
-                        <img src="https://readdy.ai/api/search-image?query=Ngong%20Hills%20in%20Kenya%20with%20rolling%20green%20hills%2C%20windmills%2C%20and%20a%20clear%20view%20of%20the%20Great%20Rift%20Valley.%20The%20image%20shows%20hikers%20on%20a%20trail%20with%20scenic%20vistas%20and%20natural%20lighting%20highlighting%20the%20beauty%20of%20this%20accessible%20hiking%20destination%20near%20Nairobi.&width=400&height=300&seq=12364&orientation=landscape" alt="Ngong Hills with Great Rift Valley view" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/ngong.png" alt="Ngong Hills with Great Rift Valley view" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Ngong Hills Trek</h3>
                         <p class="text-gray-600 mb-4">1-day trek with Rift Valley views near Nairobi.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -328,7 +340,7 @@
                         <a href="contact.html?package=ngong-hike" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="hiking">
-                        <img src="https://readdy.ai/api/search-image?query=Hells%20Gate%20National%20Park%20in%20Kenya%20with%20dramatic%20gorges%2C%20rock%20formations%2C%20and%20hikers%20exploring%20the%20trails.%20The%20image%20shows%20the%20rugged%20terrain%20and%20natural%20hot%20springs%20with%20a%20clear%20blue%20sky%20and%20professional%20composition%20highlighting%20the%20parks%20unique%20geology.&width=400&height=300&seq=12365&orientation=landscape" alt="Hell’s Gate gorges and rock formations" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/hells.png" alt="Hell’s Gate gorges and rock formations" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Hell’s Gate Adventure</h3>
                         <p class="text-gray-600 mb-4">1-day hiking and cycling in dramatic gorges.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -338,6 +350,28 @@
                         </ul>
                         <a href="contact.html?package=hells-gate" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
+                    <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="safaris">
+                        <img src="images/naivasha.png" alt="Red elephants in Tsavo East" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <h3 class="text-xl font-bold mb-2">Tsavo East & West Safari</h3>
+                        <p class="text-gray-600 mb-4">4-day safari with red elephants and vast landscapes.</p>
+                        <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                            <li><i class="ri-time-line mr-2"></i>Duration: 4 days</li>
+                            <li><i class="ri-group-line mr-2"></i>Group: 2–8</li>
+                            <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 180,000 pp</li>
+                        </ul>
+                        <a href="contact.html?package=tsavo-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+                    </div>
+                    <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="safaris">
+                        <img src="images/hike.png" alt="Red elephants in Tsavo East" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <h3 class="text-xl font-bold mb-2">Tsavo East & West Safari</h3>
+                        <p class="text-gray-600 mb-4">4-day safari with red elephants and vast landscapes.</p>
+                        <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                            <li><i class="ri-time-line mr-2"></i>Duration: 4 days</li>
+                            <li><i class="ri-group-line mr-2"></i>Group: 2–8</li>
+                            <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 180,000 pp</li>
+                        </ul>
+                        <a href="contact.html?package=tsavo-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+                    </div>
                 </div>
             </div>
             <!-- Cultural Tours -->
@@ -345,7 +379,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-8">Cultural Tours</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="cultural">
-                        <img src="https://readdy.ai/api/search-image?query=Authentic%20Kenyan%20cultural%20experience%20showing%20Maasai%20warriors%20in%20traditional%20red%20clothing%20performing%20a%20jumping%20dance%20ceremony%20against%20a%20natural%20backdrop%20of%20the%20savannah.%20The%20image%20captures%20vibrant%20colors%2C%20genuine%20cultural%20expression%2C%20and%20the%20connection%20between%20people%20and%20landscape%20in%20a%20respectful%2C%20non-exploitative%20way%20that%20highlights%20the%20rich%20heritage%20of%20Kenyas%20indigenous%20communities.&width=600&height=400&seq=12348&orientation=landscape" alt="Maasai warriors performing dance" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/maasai.png" alt="Maasai warriors performing dance" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Maasai Village Tour</h3>
                         <p class="text-gray-600 mb-4">1-day immersion with Maasai culture and traditions.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -356,7 +390,7 @@
                         <a href="contact.html?package=maasai-cultural" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="cultural">
-                        <img src="https://readdy.ai/api/search-image?query=Kikuyu%20cultural%20heritage%20in%20Kenya%20with%20traditional%20dancers%20in%20colorful%20attire%20performing%20in%20a%20village%20setting%20near%20Tatu%20City.%20The%20image%20shows%20authentic%20cultural%20expression%20with%20natural%20lighting%20and%20a%20professional%20composition%20highlighting%20the%20vibrant%20traditions%20of%20the%20Kikuyu%20community.&width=400&height=300&seq=12366&orientation=landscape" alt="Kikuyu traditional dancers near Tatu City" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/kikuyu.png" alt="Kikuyu traditional dancers near Tatu City" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Kikuyu Heritage Tour</h3>
                         <p class="text-gray-600 mb-4">1-day cultural experience with Kikuyu traditions near Tatu City.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -367,7 +401,7 @@
                         <a href="contact.html?package=kikuyu-cultural" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="cultural">
-                        <img src="https://readdy.ai/api/search-image?query=Coastal%20Swahili%20culture%20in%20Kenya%20with%20traditional%20dhow%20boats%20sailing%20along%20the%20Mombasa%20coast%2C%20historic%20stone%20town%20architecture%2C%20and%20local%20artisans%20at%20work.%20The%20image%20captures%20the%20rich%20heritage%20and%20vibrant%20colors%20of%20the%20Swahili%20coast%20with%20natural%20lighting%20and%20professional%20composition.&width=400&height=300&seq=12367&orientation=landscape" alt="Swahili dhow boats in Mombasa" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/swahili.png" alt="Swahili dhow boats in Mombasa" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Coastal Swahili Culture Tour</h3>
                         <p class="text-gray-600 mb-4">2-day tour of Mombasa’s Swahili heritage and dhow sailing.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -379,12 +413,51 @@
                     </div>
                 </div>
             </div>
+            <!-- Coastal Tours -->
+            <div id="team" class="mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8">Coastal Tours</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="coastal">
+                        <img src="images/hotel.png" alt="Team celebrating in Kenyan savannah" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <h3 class="text-xl font-bold mb-2">Corporate Team Building</h3>
+                        <p class="text-gray-600 mb-4">1-day team-building adventure near Tatu City with activities.</p>
+                        <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                            <li><i class="ri-time-line mr-2"></i>Duration: 1 day</li>
+                            <li><i class="ri-group-line mr-2"></i>Group: 4–20</li>
+                            <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 75,000 pp</li>
+                        </ul>
+                        <a href="contact.html?package=nairobi-team" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+                    </div>
+                    <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="coastal">
+                        <img src="images/zanzibar.png" alt="Team-building rope course near Tatu City" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <h3 class="text-xl font-bold mb-2">Adventure Challenge</h3>
+                        <p class="text-gray-600 mb-4">2-day team-building with rope courses and challenges.</p>
+                        <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                            <li><i class="ri-time-line mr-2"></i>Duration: 2 days</li>
+                            <li><i class="ri-group-line mr-2"></i>Group: 6–25</li>
+                            <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 110,000 pp</li>
+                        </ul>
+                        <a href="contact.html?package=adventure-challenge" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+                    </div>
+                    <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="coastal">
+                        <img src="images/beach.png" alt="Red elephants in Tsavo East" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <h3 class="text-xl font-bold mb-2">Tsavo East & West Safari</h3>
+                        <p class="text-gray-600 mb-4">4-day safari with red elephants and vast landscapes.</p>
+                        <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                            <li><i class="ri-time-line mr-2"></i>Duration: 4 days</li>
+                            <li><i class="ri-group-line mr-2"></i>Group: 2–8</li>
+                            <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 180,000 pp</li>
+                        </ul>
+                        <a href="contact.html?package=tsavo-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+                    </div>
+                </div>
+            </div>
             <!-- Team Adventures -->
             <div id="team" class="mb-16">
                 <h2 class="text-2xl md:text-3xl font-bold mb-8">Team Adventures</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="team">
-                        <img src="https://readdy.ai/api/search-image?query=Group%20of%20diverse%20tourists%20enjoying%20a%20sunset%20in%20Kenyas%20savannah%2C%20raising%20their%20arms%20in%20celebration%20with%20silhouettes%20against%20an%20orange%20sky.%20The%20image%20captures%20the%20joy%20and%20wonder%20of%20travel%20experiences%20in%20Africa%20with%20authentic%20emotion%20and%20beautiful%20natural%20lighting.&width=300&height=200&seq=12355&orientation=landscape" alt="Team celebrating in Kenyan savannah" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/team.jpg" alt="Team celebrating in Kenyan savannah" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Corporate Team Building</h3>
                         <p class="text-gray-600 mb-4">1-day team-building adventure near Tatu City with activities.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -395,7 +468,7 @@
                         <a href="contact.html?package=nairobi-team" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                     <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="team">
-                        <img src="https://readdy.ai/api/search-image?query=Corporate%20team-building%20adventure%20in%20Kenya%20with%20groups%20participating%20in%20outdoor%20challenges%20like%20rope%20courses%20and%20team%20games%20in%20a%20natural%20setting%20near%20Tatu%20City.%20The%20image%20shows%20dynamic%20action%20and%20teamwork%20with%20natural%20lighting%20and%20professional%20composition.&width=400&height=300&seq=12368&orientation=landscape" alt="Team-building rope course near Tatu City" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <img src="images/zip.png" alt="Team-building rope course near Tatu City" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
                         <h3 class="text-xl font-bold mb-2">Adventure Challenge</h3>
                         <p class="text-gray-600 mb-4">2-day team-building with rope courses and challenges.</p>
                         <ul class="text-gray-600 text-sm mb-4 space-y-1">
@@ -404,6 +477,17 @@
                             <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 110,000 pp</li>
                         </ul>
                         <a href="contact.html?package=adventure-challenge" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+                    </div>
+                    <div class="package-card bg-white rounded-lg shadow-md p-6 transition duration-300" data-category="safaris">
+                        <img src="images/tsavo.png" alt="Red elephants in Tsavo East" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy">
+                        <h3 class="text-xl font-bold mb-2">Tsavo East & West Safari</h3>
+                        <p class="text-gray-600 mb-4">4-day safari with red elephants and vast landscapes.</p>
+                        <ul class="text-gray-600 text-sm mb-4 space-y-1">
+                            <li><i class="ri-time-line mr-2"></i>Duration: 4 days</li>
+                            <li><i class="ri-group-line mr-2"></i>Group: 2–8</li>
+                            <li><i class="ri-money-dollar-circle-line mr-2"></i>Price: KSh 180,000 pp</li>
+                        </ul>
+                        <a href="contact.html?package=tsavo-safari" class="inline-block bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
                     </div>
                 </div>
             </div>
