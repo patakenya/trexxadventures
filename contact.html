@@ -1,0 +1,495 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Trexx Adventures to book your Kenya safari, hiking, or cultural tour in Maasai Mara, Tatu City, and more. Call +254 715 135 141 or email us!">
+    <meta name="keywords" content="contact Trexx Adventures, Kenya safari booking, Tatu City tours, Maasai Mara contact, Kenya travel inquiries">
+    <meta name="author" content="Trexx Adventures">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Contact Trexx Adventures - Book Your Kenyan Adventure">
+    <meta property="og:description" content="Get in touch with Trexx Adventures for personalized safaris, hiking, and cultural tours in Kenya. Reach us at +254 715 135 141 or info@trexxadventures.com.">
+    <meta property="og:image" content="https://www.trexxadventures.co.ke/trexxadventures.png">
+    <meta property="og:url" content="https://www.trexxadventures.co.ke/contact.html">
+    <link rel="canonical" href="https://www.trexxadventures.co.ke/contact.html">
+    <link rel="sitemap" href="/sitemap.xml">
+    <title>Contact Us - Trexx Adventures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#2C5F2D', secondary: '#FFB347' },
+                    borderRadius: {
+                        'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px',
+                        'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPoint",
+        "telephone": "+254715135141",
+        "contactType": "Customer Service",
+        "email": "info@trexxadventures.com",
+        "areaServed": "KE",
+        "availableLanguage": ["English", "Swahili"],
+        "partOf": {
+            "@type": "LocalBusiness",
+            "name": "Trexx Adventures",
+            "address": { "@type": "PostalAddress", "streetAddress": "Tatu City", "addressLocality": "Ruiru", "addressCountry": "KE" },
+            "url": "https://www.trexxadventures.co.ke"
+        }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+        .hero-section {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0) 100%), url('lion.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2C5F2D;
+        }
+        .custom-checkbox { position: relative; cursor: pointer; }
+        .custom-checkbox input { position: absolute; opacity: 0; cursor: pointer; }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #2C5F2D;
+            border-radius: 4px;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            content: "";
+            position: absolute;
+            display: block;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid #2C5F2D;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .mobile-menu { transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 768px) { .hero-section { background-attachment: scroll; } }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-['Pacifico'] text-primary">Trexx</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="font-medium text-gray-800 hover:text-primary">Home</a>
+                <div class="relative group">
+                    <button class="font-medium text-gray-800 hover:text-primary flex items-center">
+                        Tours
+                        <i class="ri-arrow-down-s-line ml-1"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden group-hover:block">
+                        <a href="tours.html#safaris" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Wildlife Safaris</a>
+                        <a href="tours.html#hiking" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Hiking & Trekking</a>
+                        <a href="tours.html#cultural" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cultural Tours</a>
+                        <a href="tours.html#team" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Team Adventures</a>
+                    </div>
+                </div>
+                <a href="plan.html" class="font-medium text-gray-800 hover:text-primary">Plan Your Adventures</a>
+                <a href="gallery.html" class="font-medium text-gray-800 hover:text-primary">Gallery</a>
+                <a href="blog.html" class="font-medium text-gray-800 hover:text-primary">Blog</a>
+                <a href="about.html" class="font-medium text-gray-800 hover:text-primary">About Us</a>
+                <a href="contact.html" class="font-medium text-gray-800 hover:text-primary border-b-2 border-primary">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="tel:+254715135141" class="hidden md:flex items-center text-gray-800 hover:text-primary">
+                    <i class="ri-phone-line mr-2"></i>+254 715 135 141
+                </a>
+                <a href="booking.html" class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+            </div>
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="mobile-menu-toggle">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu fixed top-16 left-0 w-full bg-white shadow-md transform -translate-x-full md:hidden">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="index.html" class="font-medium text-gray-800 hover:text-primary">Home</a>
+                <div>
+                    <button class="font-medium text-gray-800 hover:text-primary flex items-center w-full" id="mobile-tours-toggle">
+                        Tours
+                        <i class="ri-arrow-down-s-line ml-1"></i>
+                    </button>
+                    <div id="mobile-tours" class="hidden pl-4 space-y-2">
+                        <a href="tours.html#safaris" class="block text-gray-800 hover:text-primary">Wildlife Safaris</a>
+                        <a href="tours.html#hiking" class="block text-gray-800 hover:text-primary">Hiking & Trekking</a>
+                        <a href="tours.html#cultural" class="block text-gray-800 hover:text-primary">Cultural Tours</a>
+                        <a href="tours.html#team" class="block text-gray-800 hover:text-primary">Team Adventures</a>
+                    </div>
+                </div>
+                <a href="plan.html" class="font-medium text-gray-800 hover:text-primary">Plan Your Adventures</a>
+                <a href="gallery.html" class="font-medium text-gray-800 hover:text-primary">Gallery</a>
+                <a href="blog.html" class="font-medium text-gray-800 hover:text-primary">Blog</a>
+                <a href="about.html" class="font-medium text-gray-800 hover:text-primary">About Us</a>
+                <a href="contact.html" class="font-medium text-gray-800 hover:text-primary">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-[50vh] flex items-center pt-16 fade-in" id="home">
+        <div class="container mx-auto px-4 w-full">
+            <div class="max-w-2xl py-12 md:py-20">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">Get in Touch with Trexx Adventures</h1>
+                <p class="text-lg text-white mb-8 opacity-90">Contact us to book your personalized safari, hiking, or cultural tour in Kenya.</p>
+                <a href="#contact" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 md:py-24" id="contact">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Ready to start your adventure? Reach out to our team in Tatu City.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Your name" required>
+                            <span class="text-red-500 text-sm hidden" id="name-error">Name is required</span>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Your email" required>
+                            <span class="text-red-500 text-sm hidden" id="email-error">Valid email is required</span>
+                        </div>
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Your phone number" required>
+                            <span class="text-red-500 text-sm hidden" id="phone-error">Valid phone number is required</span>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Tell us about your travel plans" required></textarea>
+                            <span class="text-red-500 text-sm hidden" id="message-error">Message is required</span>
+                        </div>
+                        <div class="mb-6">
+                            <label class="custom-checkbox flex items-center">
+                                <input type="checkbox" name="newsletter" id="newsletter">
+                                <span class="checkmark"></span>
+                                <span class="ml-7 text-gray-700">Subscribe to our newsletter</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition">Send Message</button>
+                    </form>
+                </div>
+                <div>
+                    <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="ri-phone-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Phone</h4>
+                                    <a href="tel:+254715135141" class="text-gray-600 hover:text-primary">+254 715 135 141</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="ri-mail-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email</h4>
+                                    <a href="mailto:info@trexxadventures.com" class="text-gray-600 hover:text-primary">info@trexxadventures.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="ri-map-pin-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Location</h4>
+                                    <p class="text-gray-600">Tatu City, Ruiru, Kenya</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="ri-time-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Office Hours</h4>
+                                    <p class="text-gray-600">Mon-Fri: 8:00 AM - 6:00 PM</p>
+                                    <p class="text-gray-600">Sat: 9:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://facebook.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="ri-facebook-fill"></i>
+                                </a>
+                                <a href="https://instagram.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="ri-instagram-line"></i>
+                                </a>
+                                <a href="https://x.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="ri-twitter-x-line"></i>
+                                </a>
+                                <a href="https://youtube.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="ri-youtube-line"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden h-80">
+                        <img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Map of Tatu City, Ruiru, Kenya" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="index.html" class="text-3xl font-['Pacifico'] text-white mb-6 inline-block">Trexx</a>
+                    <p class="text-gray-400 mb-6">Authentic Kenyan adventures since 2018, connecting travelers with nature and culture near Tatu City.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://instagram.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://x.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="https://youtube.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="tours.html" class="text-gray-400 hover:text-white transition">Tours</a></li>
+                        <li><a href="plan.html" class="text-gray-400 hover:text-white transition">Plan Your Adventures</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Popular Tours</h3>
+                    <ul class="space-y-3">
+                        <li><a href="tours.html#maasai-mara" class="text-gray-400 hover:text-white transition">Maasai Mara Safari</a></li>
+                        <li><a href="tours.html#mount-kenya" class="text-gray-400 hover:text-white transition">Mount Kenya Trekking</a></li>
+                        <li><a href="tours.html#cultural" class="text-gray-400 hover:text-white transition">Cultural Village Tours</a></li>
+                        <li><a href="tours.html#diani-beach" class="text-gray-400 hover:text-white transition">Diani Beach Getaway</a></li>
+                        <li><a href="tours.html#team" class="text-gray-400 hover:text-white transition">Team Adventures</a></li>
+                        <li><a href="tours.html#nairobi" class="text-gray-400 hover:text-white transition">Nairobi Day Trips</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe for travel tips and exclusive offers.</p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="Your email address" class="px-4 py-3 w-full rounded-l-button border-none text-gray-800">
+                            <button type="submit" class="bg-primary text-white px-4 py-3 rounded-r-button hover:bg-opacity-90 transition">Subscribe</button>
+                        </div>
+                    </form>
+                    <div>
+                        <h4 class="font-bold mb-3">Contact Us</h4>
+                        <p class="flex items-center text-gray-400 mb-2">
+                            <i class="ri-phone-line mr-2"></i>
+                            <a href="tel:+254715135141" class="hover:text-white">+254 715 135 141</a>
+                        </p>
+                        <p class="flex items-center text-gray-400">
+                            <i class="ri-mail-line mr-2"></i>
+                            <a href="mailto:info@trexxadventures.com" class="hover:text-white">info@trexxadventures.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <i class="ri-visa-fill text-2xl text-gray-400"></i>
+                    <i class="ri-mastercard-fill text-2xl text-gray-400"></i>
+                    <i class="ri-paypal-fill text-2xl text-gray-400"></i>
+                    <i class="ri-bank-card-fill text-2xl text-gray-400"></i>
+                </div>
+                <p class="text-gray-500">© 2025 Trexx Adventures. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Chat Button -->
+    <a href="https://wa.me/+254715135141?text=Hi%20Trexx%20Adventures,%20I%27m%20interested%20in%20booking%20an%20adventure!" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition" aria-label="Chat on WhatsApp">
+        <i class="ri-whatsapp-line text-2xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const toursToggle = document.getElementById('mobile-tours-toggle');
+            const toursMenu = document.getElementById('mobile-tours');
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                mobileMenu.classList.toggle('-translate-x-full');
+            });
+            toursToggle.addEventListener('click', () => {
+                toursMenu.classList.toggle('hidden');
+            });
+
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = anchor.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Prefill Form
+            const params = new URLSearchParams(window.location.search);
+            const destination = params.get('destination') || '';
+            const activity = params.get('activity') || '';
+            const groupSize = params.get('groupSize') || '';
+            const travelDate = params.get('travelDate') || '';
+            const budget = params.get('budget') || '';
+            if (destination || activity || groupSize || travelDate || budget) {
+                const message = `Interested in a ${activity} adventure in ${destination} for ${groupSize} people on ${travelDate} with a budget of KSh ${parseInt(budget).toLocaleString()}. Please provide details.`;
+                document.getElementById('message').value = message;
+            }
+
+            // Form Validation
+            const form = document.getElementById('contact-form');
+            const fields = ['name', 'email', 'phone', 'message'];
+            function validateField(field) {
+                const input = document.getElementById(field);
+                const error = document.getElementById(`${field}-error`);
+                let isValid = true;
+                if (field === 'email') {
+                    isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+                } else if (field === 'phone') {
+                    isValid = /^\+?\d{10,12}$/.test(input.value.replace(/\s/g, ''));
+                } else {
+                    isValid = input.value.trim() !== '';
+                }
+                error.classList.toggle('hidden', isValid);
+                input.classList.toggle('border-red-500', !isValid);
+                return isValid;
+            }
+            fields.forEach(field => {
+                document.getElementById(field).addEventListener('input', () => validateField(field));
+            });
+
+            // Checkbox Styling
+            const checkbox = document.getElementById('newsletter');
+            checkbox.addEventListener('change', () => {
+                const checkmark = checkbox.nextElementSibling;
+                checkmark.classList.toggle('checked', checkbox.checked);
+            });
+
+            // Form Submission
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+                fields.forEach(field => {
+                    if (!validateField(field)) isValid = false;
+                });
+                if (isValid) {
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    submitButton.textContent = 'Sending...';
+                    submitButton.disabled = true;
+                    setTimeout(() => {
+                        alert('Thank you for your message! We’ll get back to you soon.');
+                        form.reset();
+                        fields.forEach(field => document.getElementById(`${field}-error`).classList.add('hidden'));
+                        submitButton.textContent = 'Send Message';
+                        submitButton.disabled = false;
+                    }, 1500);
+                }
+            });
+
+            // Lazy Loading
+            document.querySelectorAll('img').forEach(img => img.setAttribute('loading', 'lazy'));
+        });
+    </script>
+</body>
+</html>

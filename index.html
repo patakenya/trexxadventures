@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trexx Adventures offers thrilling safaris, cultural tours, and hiking in Kenya’s iconic destinations like Maasai Mara and Tatu City. Book your adventure today!">
+    <meta name="keywords" content="Kenya safaris, Tatu City adventures, Maasai Mara tours, Mount Kenya hiking, cultural tours Kenya, sustainable travel">
+    <meta name="author" content="Trexx Adventures">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Trexx Adventures - Unleash Your Kenyan Adventure">
+    <meta property="og:description" content="Discover Kenya’s wildlife, cultures, and landscapes with Trexx Adventures. Book safaris, hiking, and cultural tours near Tatu City and beyond!">
+    <meta property="og:image" content="https://www.trexxadventures.co.ke/trexxadventures.png">
+    <meta property="og:url" content="https://www.trexxadventures.co.ke">
+    <link rel="canonical" href="https://www.trexxadventures.co.ke">
+    <link rel="sitemap" href="/sitemap.xml">
     <title>Trexx Adventures - Unleash Your Kenyan Adventure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,25 +20,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#2C5F2D',secondary:'#FFB347'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C5F2D', // Earthy green
+                        secondary: '#FFB347' // Savannah gold
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Trexx Adventures",
+        "image": "https://www.trexxadventures.co.ke/trexxadventures.png",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Tatu City",
+            "addressLocality": "Ruiru",
+            "addressCountry": "KE"
+        },
+        "telephone": "+254715135141",
+        "email": "info@trexxadventures.com",
+        "url": "https://www.trexxadventures.co.ke",
+        "description": "Trexx Adventures offers eco-friendly safaris, cultural tours, and hiking adventures in Kenya, including Maasai Mara, Mount Kenya, and Tatu City.",
+        "sameAs": [
+            "https://facebook.com/trexxadventures",
+            "https://instagram.com/trexxadventures",
+            "https://x.com/trexxadventures"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "200"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "https://www.trexxadventures.co.ke/experiences.html",
+            "priceCurrency": "USD",
+            "description": "Wildlife safaris, hiking, and cultural tours in Kenya",
+            "availability": "http://schema.org/InStock"
+        }
+    }
+    </script>
     <style>
-        :where([class^="ri-"])::before { content: "\f3c2"; }
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-        }
+        body { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
         .hero-section {
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0) 100%), url('lion.png');
             background-size: cover;
             background-position: center;
         }
-        .destination-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        .experience-card:hover {
+        .destination-card:hover, .experience-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
@@ -36,22 +95,13 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        .scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-        input:focus, textarea:focus {
+        .scroll-container::-webkit-scrollbar { display: none; }
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: #2C5F2D;
         }
-        .custom-checkbox {
-            position: relative;
-            cursor: pointer;
-        }
-        .custom-checkbox input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
+        .custom-checkbox { position: relative; cursor: pointer; }
+        .custom-checkbox input { position: absolute; opacity: 0; cursor: pointer; }
         .checkmark {
             position: absolute;
             top: 0;
@@ -74,35 +124,72 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
+        .mobile-menu { transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+        .testimonial-slide { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .testimonial-slide.active { display: block; }
+        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .dot.active { background-color: #2C5F2D; }
     </style>
 </head>
 <body class="bg-white">
     <!-- Header & Navigation -->
     <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-3xl font-['Pacifico'] text-primary">Trexx</a>
-            
+            <a href="index.html" class="text-3xl font-['Pacifico'] text-primary">Trexx</a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#" class="font-medium text-gray-800 hover:text-primary">Home</a>
-                <a href="#experiences" class="font-medium text-gray-800 hover:text-primary">Experiences</a>
-                <a href="#blog" class="font-medium text-gray-800 hover:text-primary">Blog</a>
-                <a href="#about" class="font-medium text-gray-800 hover:text-primary">About Us</a>
-                <a href="#contact" class="font-medium text-gray-800 hover:text-primary">Contact</a>
-            </nav>
-            
-            <div class="flex items-center space-x-4">
-                <a href="tel:0715135141" class="hidden md:flex items-center text-gray-800 hover:text-primary">
-                    <div class="w-8 h-8 flex items-center justify-center mr-2">
-                        <i class="ri-phone-line text-primary"></i>
+                <a href="index.html" class="font-medium text-gray-800 hover:text-primary">Home</a>
+                <div class="relative group">
+                    <button class="font-medium text-gray-800 hover:text-primary flex items-center">
+                        Tours
+                        <i class="ri-arrow-down-s-line ml-1"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden group-hover:block">
+                        <a href="tours.html#safaris" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Wildlife Safaris</a>
+                        <a href="tours.html#hiking" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Hiking & Trekking</a>
+                        <a href="tours.html#cultural" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cultural Tours</a>
+                        <a href="tours.html#teambuilding" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Team Building</a>
                     </div>
-                    <span class="font-medium">0715135141</span>
+                </div>
+                <a href="plan.html" class="font-medium text-gray-800 hover:text-primary">Plan Your Adventure</a>
+                <a href="gallery.html" class="font-medium text-gray-800 hover:text-primary">Gallery</a>
+                <a href="blog.html" class="font-medium text-gray-800 hover:text-primary">Blog</a>
+                <a href="about.html" class="font-medium text-gray-800 hover:text-primary">About Us</a>
+                <a href="contact.html" class="font-medium text-gray-800 hover:text-primary">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="tel:+254715135141" class="hidden md:flex items-center text-gray-800 hover:text-primary">
+                    <i class="ri-phone-line mr-2"></i>+254 715 135 141
                 </a>
-                <a href="#contact" class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">Book Now</a>
+                <a href="booking.html" class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
             </div>
-            
-            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="mobile-menu-toggle">
                 <i class="ri-menu-line text-2xl"></i>
             </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-16 left-0 w-full bg-white shadow-md transform -translate-x-full md:hidden">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="index.html" class="font-medium text-gray-800 hover:text-primary">Home</a>
+                <div>
+                    <button class="font-medium text-gray-800 hover:text-primary flex items-center w-full" id="mobile-experiences-toggle">
+                        Experiences
+                        <i class="ri-arrow-down-s-line ml-1"></i>
+                    </button>
+                    <div id="mobile-experiences" class="hidden pl-4 space-y-2">
+                        <a href="tours.html#safaris" class="block text-gray-800 hover:text-primary">Wildlife Safaris</a>
+                        <a href="tours.html#hiking" class="block text-gray-800 hover:text-primary">Hiking & Trekking</a>
+                        <a href="tours.html#cultural" class="block text-gray-800 hover:text-primary">Cultural Tours</a>
+                        <a href="tours.html#teambuilding" class="block text-gray-800 hover:text-primary">Team Building</a>
+                    </div>
+                </div>
+                <a href="plan.html" class="font-medium text-gray-800 hover:text-primary">Plan Your Adventure</a>
+                <a href="gallery.html" class="font-medium text-gray-800 hover:text-primary">Gallery</a>
+                <a href="blog.html" class="font-medium text-gray-800 hover:text-primary">Blog</a>
+                <a href="about.html" class="font-medium text-gray-800 hover:text-primary">About Us</a>
+                <a href="contact.html" class="font-medium text-gray-800 hover:text-primary">Contact</a>
+            </nav>
         </div>
     </header>
 
@@ -111,14 +198,11 @@
         <div class="container mx-auto px-4 w-full">
             <div class="max-w-2xl py-20 md:py-32">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">Unleash Your Adventure with Trexx Adventures</h1>
-                <p class="text-xl text-white mb-8 opacity-90">Discover Kenya's breathtaking landscapes, vibrant cultures, and unforgettable experiences with our expert-guided tours.</p>
+                <p class="text-xl text-white mb-8 opacity-90">Discover Kenya's breathtaking landscapes, vibrant cultures, and unforgettable experiences with our expert-guided tours near Tatu City.</p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#experiences" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">Start Your Journey</a>
-                    <a href="tel:0715135141" class="bg-white text-primary px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap flex items-center">
-                        <div class="w-6 h-6 flex items-center justify-center mr-2">
-                            <i class="ri-phone-line"></i>
-                        </div>
-                        Contact: 0715135141
+                    <a href="experiences.html" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition">Start Your Journey</a>
+                    <a href="tel:+254715135141" class="bg-white text-primary px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition flex items-center">
+                        <i class="ri-phone-line mr-2"></i>Contact: +254 715 135 141
                     </a>
                 </div>
             </div>
@@ -130,73 +214,57 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Unforgettable Experiences</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">Embark on extraordinary journeys through Kenya's most captivating destinations with our carefully curated experiences.</p>
+                <p class="text-gray-600 max-w-3xl mx-auto">Embark on extraordinary journeys through Kenya's most captivating destinations with our curated experiences.</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Safari Experience -->
                 <div class="experience-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=Majestic%20African%20wildlife%20safari%20scene%20with%20elephants%20and%20giraffes%20roaming%20freely%20across%20golden%20savannah%20grasslands%20at%20sunset%2C%20with%20acacia%20trees%20silhouetted%20against%20an%20orange%20sky.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20beauty%20of%20Kenyas%20national%20parks.&width=600&height=400&seq=12346&orientation=landscape" alt="Wildlife Safari" class="w-full h-full object-cover object-top">
+                        <img src="https://readdy.ai/api/search-image?query=Majestic%20African%20wildlife%20safari%20scene%20with%20elephants%20and%20giraffes%20roaming%20freely%20across%20golden%20savannah%20grasslands%20at%20sunset%2C%20with%20acacia%20trees%20silhouetted%20against%20an%20orange%20sky.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20beauty%20of%20Kenyas%20national%20parks.&width=600&height=400&seq=12346&orientation=landscape" alt="Wildlife safari with elephants in Maasai Mara" class="w-full h-full object-cover object-top" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Wildlife Safaris</h3>
-                        <p class="text-gray-600 mb-4">Encounter the Big Five and witness the spectacular wildlife in Kenya's renowned national parks, including Nairobi National Park near Tatu City.</p>
+                        <p class="text-gray-600 mb-4">Encounter the Big Five in Nairobi National Park near Tatu City or Maasai Mara.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-primary font-medium">From $120 per person</span>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                Explore
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <span class="text-primary font-medium">From $120 pp</span>
+                            <a href="experiences.html#safaris" class="text-primary font-medium flex items-center hover:underline">
+                                Explore <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Hiking Experience -->
                 <div class="experience-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=Breathtaking%20view%20of%20hikers%20trekking%20up%20Mount%20Kenya%20with%20lush%20green%20forests%20in%20the%20foreground%20and%20snow-capped%20peaks%20in%20the%20background.%20The%20image%20shows%20a%20clear%20trail%20winding%20through%20alpine%20vegetation%20with%20dramatic%20clouds%20partially%20covering%20the%20mountain%20summit.%20The%20composition%20captures%20both%20the%20scale%20of%20the%20mountain%20and%20the%20adventure%20of%20the%20hiking%20experience.&width=600&height=400&seq=12347&orientation=landscape" alt="Hiking Adventures" class="w-full h-full object-cover object-top">
+                        <img src="https://readdy.ai/api/search-image?query=Breathtaking%20view%20of%20hikers%20trekking%20up%20Mount%20Kenya%20with%20lush%20green%20forests%20in%20the%20foreground%20and%20snow-capped%20peaks%20in%20the%20background.%20The%20image%20shows%20a%20clear%20trail%20winding%20through%20alpine%20vegetation%20with%20dramatic%20clouds%20partially%20covering%20the%20mountain%20summit.%20The%20composition%20captures%20both%20the%20scale%20of%20the%20mountain%20and%20the%20adventure%20of%20the%20hiking%20experience.&width=600&height=400&seq=12347&orientation=landscape" alt="Hikers trekking Mount Kenya" class="w-full h-full object-cover object-top" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Hiking & Trekking</h3>
-                        <p class="text-gray-600 mb-4">Conquer the heights of Mount Kenya or explore the lush trails of Aberdare Ranges with our experienced guides leading the way.</p>
+                        <p class="text-gray-600 mb-4">Conquer Mount Kenya or explore Aberdare Ranges with expert guides.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-primary font-medium">From $85 per person</span>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                Explore
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <span class="text-primary font-medium">From $85 pp</span>
+                            <a href="experiences.html#hiking" class="text-primary font-medium flex items-center hover:underline">
+                                Explore <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Cultural Experience -->
                 <div class="experience-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=Authentic%20Kenyan%20cultural%20experience%20showing%20Maasai%20warriors%20in%20traditional%20red%20clothing%20performing%20a%20jumping%20dance%20ceremony%20against%20a%20natural%20backdrop%20of%20the%20savannah.%20The%20image%20captures%20vibrant%20colors%2C%20genuine%20cultural%20expression%2C%20and%20the%20connection%20between%20people%20and%20landscape%20in%20a%20respectful%2C%20non-exploitative%20way%20that%20highlights%20the%20rich%20heritage%20of%20Kenyas%20indigenous%20communities.&width=600&height=400&seq=12348&orientation=landscape" alt="Cultural Tours" class="w-full h-full object-cover object-top">
+                        <img src="https://readdy.ai/api/search-image?query=Authentic%20Kenyan%20cultural%20experience%20showing%20Maasai%20warriors%20in%20traditional%20red%20clothing%20performing%20a%20jumping%20dance%20ceremony%20against%20a%20natural%20backdrop%20of%20the%20savannah.%20The%20image%20captures%20vibrant%20colors%2C%20genuine%20cultural%20expression%2C%20and%20the%20connection%20between%20people%20and%20landscape%20in%20a%20respectful%2C%20non-exploitative%20way%20that%20highlights%20the%20rich%20heritage%20of%20Kenyas%20indigenous%20communities.&width=600&height=400&seq=12348&orientation=landscape" alt="Maasai warriors performing cultural dance" class="w-full h-full object-cover object-top" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Cultural Immersions</h3>
-                        <p class="text-gray-600 mb-4">Immerse yourself in Kenya's rich cultural tapestry through authentic encounters with Maasai, Kikuyu, and other local communities.</p>
+                        <p class="text-gray-600 mb-4">Engage with Maasai and Kikuyu communities for authentic cultural experiences.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-primary font-medium">From $75 per person</span>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                Explore
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <span class="text-primary font-medium">From $75 pp</span>
+                            <a href="experiences.html#cultural" class="text-primary font-medium flex items-center hover:underline">
+                                Explore <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="mt-16 text-center">
-                <a href="#" class="inline-block bg-white border-2 border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition whitespace-nowrap">View All Experiences</a>
+                <a href="experiences.html" class="inline-block bg-white border-2 border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition">View All Experiences</a>
             </div>
         </div>
     </section>
@@ -207,7 +275,7 @@
             <div class="flex justify-between items-end mb-8">
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Popular Destinations</h2>
-                    <p class="text-gray-600 max-w-2xl">Explore Kenya's most iconic locations with our expertly guided tours.</p>
+                    <p class="text-gray-600 max-w-2xl">Explore Kenya's iconic locations with our expertly guided tours.</p>
                 </div>
                 <div class="hidden md:flex space-x-2">
                     <button id="prev-destination" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-primary hover:text-primary transition">
@@ -218,133 +286,90 @@
                     </button>
                 </div>
             </div>
-            
             <div class="relative">
                 <div id="destinations-container" class="flex space-x-6 overflow-x-auto scroll-container pb-4">
-                    <!-- Destination 1 -->
                     <div class="destination-card flex-shrink-0 w-full md:w-80 bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://readdy.ai/api/search-image?query=Maasai%20Mara%20National%20Reserve%20in%20Kenya%20with%20vast%20golden%20savannah%20plains%20dotted%20with%20acacia%20trees%2C%20wildlife%20including%20lions%20and%20zebras%2C%20and%20a%20dramatic%20sky%20during%20golden%20hour.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20beauty%20of%20this%20iconic%20safari%20destination.&width=400&height=300&seq=12349&orientation=landscape" alt="Maasai Mara" class="w-full h-full object-cover object-top">
+                            <img src="https://readdy.ai/api/search-image?query=Maasai%20Mara%20National%20Reserve%20in%20Kenya%20with%20vast%20golden%20savannah%20plains%20dotted%20with%20acacia%20trees%2C%20wildlife%20including%20lions%20and%20zebras%2C%20and%20a%20dramatic%20sky%20during%20golden%20hour.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20beauty%20of%20this%20iconic%20safari%20destination.&width=400&height=300&seq=12349&orientation=landscape" alt="Maasai Mara savannah with wildlife" class="w-full h-full object-cover object-top" loading="lazy">
                         </div>
                         <div class="p-5">
                             <h3 class="text-lg font-bold mb-2">Maasai Mara</h3>
                             <div class="flex items-center text-gray-600 mb-3">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-time-line"></i>
-                                </div>
-                                <span>3-5 days</span>
+                                <i class="ri-time-line mr-2"></i><span>3-5 days</span>
                             </div>
-                            <p class="text-gray-600 text-sm mb-4">Experience the world-famous wildebeest migration and encounter the Big Five in Kenya's premier wildlife reserve.</p>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                View Details
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <p class="text-gray-600 text-sm mb-4">Experience the wildebeest migration and Big Five in Kenya’s premier reserve.</p>
+                            <a href="experiences.html#maasai-mara" class="text-primary font-medium flex items-center hover:underline">
+                                View Details <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Destination 2 -->
                     <div class="destination-card flex-shrink-0 w-full md:w-80 bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://readdy.ai/api/search-image?query=Mount%20Kenya%20national%20park%20with%20snow-capped%20peaks%20rising%20above%20lush%20forests%20and%20alpine%20meadows%2C%20clear%20blue%20sky%20with%20wispy%20clouds%2C%20and%20a%20hiking%20trail%20visible%20in%20the%20foreground.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20majestic%20beauty%20of%20Africas%20second-highest%20mountain.&width=400&height=300&seq=12350&orientation=landscape" alt="Mount Kenya" class="w-full h-full object-cover object-top">
+                            <img src="https://readdy.ai/api/search-image?query=Mount%20Kenya%20national%20park%20with%20snow-capped%20peaks%20rising%20above%20lush%20forests%20and%20alpine%20meadows%2C%20clear%20blue%20sky%20with%20wispy%20clouds%2C%20and%20a%20hiking%20trail%20visible%20in%20the%20foreground.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20majestic%20beauty%20of%20Africas%20second-highest%20mountain.&width=400&height=300&seq=12350&orientation=landscape" alt="Mount Kenya snow-capped peaks" class="w-full h-full object-cover object-top" loading="lazy">
                         </div>
                         <div class="p-5">
                             <h3 class="text-lg font-bold mb-2">Mount Kenya</h3>
                             <div class="flex items-center text-gray-600 mb-3">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-time-line"></i>
-                                </div>
-                                <span>4-6 days</span>
+                                <i class="ri-time-line mr-2"></i><span>4-6 days</span>
                             </div>
-                            <p class="text-gray-600 text-sm mb-4">Conquer Africa's second-highest peak with routes for both experienced climbers and casual hikers.</p>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                View Details
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <p class="text-gray-600 text-sm mb-4">Conquer Africa’s second-highest peak with routes for all skill levels.</p>
+                            <a href="experiences.html#mount-kenya" class="text-primary font-medium flex items-center hover:underline">
+                                View Details <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Destination 3 -->
                     <div class="destination-card flex-shrink-0 w-full md:w-80 bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://readdy.ai/api/search-image?query=Diani%20Beach%20in%20Kenya%20with%20pristine%20white%20sand%2C%20crystal%20clear%20turquoise%20waters%2C%20and%20palm%20trees%20swaying%20in%20the%20breeze.%20The%20image%20shows%20the%20perfect%20tropical%20paradise%20with%20gentle%20waves%20lapping%20at%20the%20shore%20and%20a%20few%20beachgoers%20enjoying%20the%20idyllic%20setting.%20The%20composition%20captures%20both%20the%20serenity%20and%20beauty%20of%20this%20famous%20Kenyan%20coastal%20destination.&width=400&height=300&seq=12351&orientation=landscape" alt="Diani Beach" class="w-full h-full object-cover object-top">
+                            <img src="https://readdy.ai/api/search-image?query=Diani%20Beach%20in%20Kenya%20with%20pristine%20white%20sand%2C%20crystal%20clear%20turquoise%20waters%2C%20and%20palm%20trees%20swaying%20in%20the%20breeze.%20The%20image%20shows%20the%20perfect%20tropical%20paradise%20with%20gentle%20waves%20lapping%20at%20the%20shore%20and%20a%20few%20beachgoers%20enjoying%20the%20idyllic%20setting.%20The%20composition%20captures%20both%20the%20serenity%20and%20beauty%20of%20this%20famous%20Kenyan%20coastal%20destination.&width=400&height=300&seq=12351&orientation=landscape" alt="Diani Beach with turquoise waters" class="w-full h-full object-cover object-top" loading="lazy">
                         </div>
                         <div class="p-5">
                             <h3 class="text-lg font-bold mb-2">Diani Beach</h3>
                             <div class="flex items-center text-gray-600 mb-3">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-time-line"></i>
-                                </div>
-                                <span>2-7 days</span>
+                                <i class="ri-time-line mr-2"></i><span>2-7 days</span>
                             </div>
-                            <p class="text-gray-600 text-sm mb-4">Relax on pristine white sands and enjoy water sports along Kenya's stunning coastal paradise.</p>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                View Details
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <p class="text-gray-600 text-sm mb-4">Relax on white sands and enjoy water sports in Kenya’s coastal paradise.</p>
+                            <a href="experiences.html#diani-beach" class="text-primary font-medium flex items-center hover:underline">
+                                View Details <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Destination 4 -->
                     <div class="destination-card flex-shrink-0 w-full md:w-80 bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://readdy.ai/api/search-image?query=Lake%20Nakuru%20National%20Park%20in%20Kenya%20with%20thousands%20of%20pink%20flamingos%20lining%20the%20shoreline%2C%20creating%20a%20stunning%20pink%20border%20around%20the%20blue%20waters%20of%20the%20lake.%20The%20image%20shows%20acacia%20trees%20in%20the%20background%2C%20a%20clear%20blue%20sky%2C%20and%20possibly%20other%20wildlife%20like%20rhinos%20or%20buffalo%20in%20the%20distance.%20The%20composition%20captures%20the%20unique%20ecosystem%20and%20famous%20flamingo%20spectacle%20of%20this%20Kenyan%20national%20park.&width=400&height=300&seq=12352&orientation=landscape" alt="Lake Nakuru" class="w-full h-full object-cover object-top">
+                            <img src="https://readdy.ai/api/search-image?query=Lake%20Nakuru%20National%20Park%20in%20Kenya%20with%20thousands%20of%20pink%20flamingos%20lining%20the%20shoreline%2C%20creating%20a%20stunning%20pink%20border%20around%20the%20blue%20waters%20of%20the%20lake.%20The%20image%20shows%20acacia%20trees%20in%20the%20background%2C%20a%20clear%20blue%20sky%2C%20and%20possibly%20other%20wildlife%20like%20rhinos%20or%20buffalo%20in%20the%20distance.%20The%20composition%20captures%20the%20unique%20ecosystem%20and%20famous%20flamingo%20spectacle%20of%20this%20Kenyan%20national%20park.&width=400&height=300&seq=12352&orientation=landscape" alt="Lake Nakuru with flamingos" class="w-full h-full object-cover object-top" loading="lazy">
                         </div>
                         <div class="p-5">
                             <h3 class="text-lg font-bold mb-2">Lake Nakuru</h3>
                             <div class="flex items-center text-gray-600 mb-3">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-time-line"></i>
-                                </div>
-                                <span>1-2 days</span>
+                                <i class="ri-time-line mr-2"></i><span>1-2 days</span>
                             </div>
-                            <p class="text-gray-600 text-sm mb-4">Witness the spectacular pink flamingo flocks and spot rhinos in this bird watcher's paradise.</p>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                View Details
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <p class="text-gray-600 text-sm mb-4">Witness pink flamingo flocks and spot rhinos in this bird watcher’s haven.</p>
+                            <a href="experiences.html#lake-nakuru" class="text-primary font-medium flex items-center hover:underline">
+                                View Details <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- Destination 5 -->
                     <div class="destination-card flex-shrink-0 w-full md:w-80 bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                         <div class="h-48 overflow-hidden">
-                            <img src="https://readdy.ai/api/search-image?query=Amboseli%20National%20Park%20in%20Kenya%20with%20Mount%20Kilimanjaro%20rising%20majestically%20in%20the%20background%2C%20elephants%20roaming%20across%20open%20plains%2C%20and%20acacia%20trees%20creating%20iconic%20African%20silhouettes.%20The%20image%20shows%20the%20perfect%20juxtaposition%20of%20wildlife%20and%20Africas%20highest%20mountain%20with%20its%20snow-capped%20peak%20visible%20against%20a%20clear%20blue%20sky.%20The%20composition%20captures%20the%20essence%20of%20this%20famous%20Kenyan%20safari%20destination.&width=400&height=300&seq=12353&orientation=landscape" alt="Amboseli" class="w-full h-full object-cover object-top">
+                            <img src="https://readdy.ai/api/search-image?query=Amboseli%20National%20Park%20in%20Kenya%20with%20Mount%20Kilimanjaro%20rising%20majestically%20in%20the%20background%2C%20elephants%20roaming%20across%20open%20plains%2C%20and%20acacia%20trees%20creating%20iconic%20African%20silhouettes.%20The%20image%20shows%20the%20perfect%20juxtaposition%20of%20wildlife%20and%20Africas%20highest%20mountain%20with%20its%20snow-capped%20peak%20visible%20against%20a%20clear%20blue%20sky.%20The%20composition%20captures%20the%20essence%20of%20this%20famous%20Kenyan%20safari%20destination.&width=400&height=300&seq=12353&orientation=landscape" alt="Amboseli with Mount Kilimanjaro" class="w-full h-full object-cover object-top" loading="lazy">
                         </div>
                         <div class="p-5">
                             <h3 class="text-lg font-bold mb-2">Amboseli</h3>
                             <div class="flex items-center text-gray-600 mb-3">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-time-line"></i>
-                                </div>
-                                <span>2-3 days</span>
+                                <i class="ri-time-line mr-2"></i><span>2-3 days</span>
                             </div>
-                            <p class="text-gray-600 text-sm mb-4">Photograph elephants against the backdrop of snow-capped Mt. Kilimanjaro in this iconic landscape.</p>
-                            <a href="#" class="text-primary font-medium flex items-center hover:underline">
-                                View Details
-                                <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                    <i class="ri-arrow-right-line"></i>
-                                </div>
+                            <p class="text-gray-600 text-sm mb-4">Photograph elephants with Mount Kilimanjaro’s iconic backdrop.</p>
+                            <a href="experiences.html#amboseli" class="text-primary font-medium flex items-center hover:underline">
+                                View Details <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="flex justify-center mt-8 md:hidden">
-                    <div class="flex space-x-2">
-                        <button class="w-3 h-3 rounded-full bg-primary"></button>
-                        <button class="w-3 h-3 rounded-full bg-gray-300"></button>
-                        <button class="w-3 h-3 rounded-full bg-gray-300"></button>
-                        <button class="w-3 h-3 rounded-full bg-gray-300"></button>
-                        <button class="w-3 h-3 rounded-full bg-gray-300"></button>
-                    </div>
+                <div class="flex justify-center mt-8 md:hidden space-x-2">
+                    <button class="dot w-3 h-3 rounded-full bg-primary active"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-gray-300"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-gray-300"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-gray-300"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-gray-300"></button>
                 </div>
             </div>
         </div>
@@ -355,52 +380,36 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Trexx Adventures</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">We're committed to providing authentic, sustainable, and unforgettable Kenyan adventures.</p>
+                <p class="text-gray-600 max-w-3xl mx-auto">Authentic, sustainable, and unforgettable Kenyan adventures near Tatu City.</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Reason 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <div class="w-8 h-8 flex items-center justify-center text-primary">
-                            <i class="ri-map-pin-user-line text-2xl"></i>
-                        </div>
+                        <i class="ri-map-pin-user-line text-2xl text-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-center">Local Expertise</h3>
-                    <p class="text-gray-600 text-center">Our guides are born and raised in Kenya with intimate knowledge of the land, wildlife, and cultures.</p>
+                    <p class="text-gray-600 text-center">Guides with deep knowledge of Kenya’s wildlife and cultures.</p>
                 </div>
-                
-                <!-- Reason 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <div class="w-8 h-8 flex items-center justify-center text-primary">
-                            <i class="ri-heart-line text-2xl"></i>
-                        </div>
+                        <i class="ri-heart-line text-2xl text-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-center">Personalized Service</h3>
-                    <p class="text-gray-600 text-center">We tailor each adventure to your preferences, ensuring a unique and memorable experience.</p>
+                    <p class="text-gray-600 text-center">Tailored adventures for a unique experience.</p>
                 </div>
-                
-                <!-- Reason 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <div class="w-8 h-8 flex items-center justify-center text-primary">
-                            <i class="ri-recycle-line text-2xl"></i>
-                        </div>
+                        <i class="ri-recycle-line text-2xl text-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-center">Sustainable Tourism</h3>
-                    <p class="text-gray-600 text-center">We're committed to conservation and supporting local communities through responsible travel practices.</p>
+                    <p class="text-gray-600 text-center">Supporting conservation and local communities.</p>
                 </div>
-                
-                <!-- Reason 4 -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <div class="w-8 h-8 flex items-center justify-center text-primary">
-                            <i class="ri-shield-check-line text-2xl"></i>
-                        </div>
+                        <i class="ri-shield-check-line text-2xl text-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-center">Safety First</h3>
-                    <p class="text-gray-600 text-center">Your security is our priority, with comprehensive safety protocols and experienced guides.</p>
+                    <p class="text-gray-600 text-center">Comprehensive safety protocols for peace of mind.</p>
                 </div>
             </div>
         </div>
@@ -412,14 +421,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
-                    <p class="text-gray-600 mb-4">Founded in 2018, Trexx Adventures was born from a passion for sharing Kenya's natural wonders and cultural heritage with the world. Based near Tatu City, we've grown from a small team of enthusiastic guides to a premier adventure company.</p>
-                    <p class="text-gray-600 mb-6">Our mission is to create authentic, sustainable travel experiences that connect visitors with Kenya's landscapes, wildlife, and communities while preserving these treasures for future generations.</p>
+                    <p class="text-gray-600 mb-4">Since 2018, Trexx Adventures has shared Kenya’s natural wonders and cultural heritage from our base near Tatu City. We’ve grown into a premier adventure company, connecting travelers with authentic experiences.</p>
+                    <p class="text-gray-600 mb-6">Our mission is to deliver sustainable travel that preserves Kenya’s landscapes and supports local communities, from Maasai Mara safaris to Mount Kenya treks.</p>
                     <div class="flex flex-wrap gap-4 mb-8">
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
-                                <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                    <i class="ri-group-line"></i>
-                                </div>
+                                <i class="ri-group-line text-primary"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold">15+</h4>
@@ -428,9 +435,7 @@
                         </div>
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
-                                <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                    <i class="ri-map-pin-line"></i>
-                                </div>
+                                <i class="ri-map-pin-line text-primary"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold">20+</h4>
@@ -439,9 +444,7 @@
                         </div>
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
-                                <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                    <i class="ri-user-smile-line"></i>
-                                </div>
+                                <i class="ri-user-smile-line text-primary"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold">5000+</h4>
@@ -449,14 +452,13 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="inline-block bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">Learn More About Us</a>
+                    <a href="about.html" class="inline-block bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition">Learn More About Us</a>
                 </div>
-                
                 <div class="grid grid-cols-2 gap-4">
-                    <img src="https://readdy.ai/api/search-image?query=Professional%20Kenyan%20safari%20guide%20in%20khaki%20uniform%20pointing%20out%20wildlife%20to%20tourists%2C%20with%20a%20safari%20vehicle%20visible%20in%20the%20background.%20The%20image%20shows%20a%20genuine%20interaction%20with%20warm%20lighting%20and%20authentic%20safari%20setting%2C%20capturing%20the%20expertise%20and%20passion%20of%20local%20guides%20in%20sharing%20Kenyas%20natural%20wonders.&width=300&height=400&seq=12354&orientation=portrait" alt="Our Team" class="rounded-lg h-64 w-full object-cover object-top">
-                    <img src="https://readdy.ai/api/search-image?query=Group%20of%20diverse%20tourists%20enjoying%20a%20sunset%20in%20Kenyas%20savannah%2C%20raising%20their%20arms%20in%20celebration%20with%20silhouettes%20against%20an%20orange%20sky.%20The%20image%20captures%20the%20joy%20and%20wonder%20of%20travel%20experiences%20in%20Africa%20with%20authentic%20emotion%20and%20beautiful%20natural%20lighting.&width=300&height=200&seq=12355&orientation=landscape" alt="Happy Travelers" class="rounded-lg h-40 w-full object-cover object-top">
-                    <img src="https://readdy.ai/api/search-image?query=Close-up%20of%20traditional%20Maasai%20beadwork%20jewelry%20being%20crafted%20by%20local%20artisan%20hands%2C%20showing%20intricate%20colorful%20patterns%20and%20craftsmanship.%20The%20image%20highlights%20cultural%20heritage%20and%20authentic%20artisanal%20work%20with%20natural%20lighting%20and%20focus%20on%20the%20detailed%20handiwork.&width=300&height=200&seq=12356&orientation=landscape" alt="Local Crafts" class="rounded-lg h-40 w-full object-cover object-top">
-                    <img src="https://readdy.ai/api/search-image?query=Trexx%20Adventures%20team%20members%20in%20branded%20green%20shirts%20gathered%20together%20smiling%20at%20the%20camera%2C%20standing%20in%20front%20of%20a%20safari%20vehicle%20with%20company%20logo.%20The%20image%20shows%20a%20diverse%2C%20professional%20team%20with%20a%20friendly%2C%20welcoming%20appearance%20against%20a%20natural%20Kenyan%20backdrop.&width=300&height=400&seq=12357&orientation=portrait" alt="Our Team" class="rounded-lg h-64 w-full object-cover object-top">
+                    <img src="https://readdy.ai/api/search-image?query=Professional%20Kenyan%20safari%20guide%20in%20khaki%20uniform%20pointing%20out%20wildlife%20to%20tourists%2C%20with%20a%20safari%20vehicle%20visible%20in%20the%20background.%20The%20image%20shows%20a%20genuine%20interaction%20with%20warm%20lighting%20and%20authentic%20safari%20setting%2C%20capturing%20the%20expertise%20and%20passion%20of%20local%20guides%20in%20sharing%20Kenyas%20natural%20wonders.&width=300&height=400&seq=12354&orientation=portrait" alt="Kenyan safari guide with tourists" class="rounded-lg h-64 w-full object-cover object-top" loading="lazy">
+                    <img src="https://readdy.ai/api/search-image?query=Group%20of%20diverse%20tourists%20enjoying%20a%20sunset%20in%20Kenyas%20savannah%2C%20raising%20their%20arms%20in%20celebration%20with%20silhouettes%20against%20an%20orange%20sky.%20The%20image%20captures%20the%20joy%20and%20wonder%20of%20travel%20experiences%20in%20Africa%20with%20authentic%20emotion%20and%20beautiful%20natural%20lighting.&width=300&height=200&seq=12355&orientation=landscape" alt="Tourists celebrating at sunset in Kenya" class="rounded-lg h-40 w-full object-cover object-top" loading="lazy">
+                    <img src="https://readdy.ai/api/search-image?query=Close-up%20of%20traditional%20Maasai%20beadwork%20jewelry%20being%20crafted%20by%20local%20artisan%20hands%2C%20showing%20intricate%20colorful%20patterns%20and%20craftsmanship.%20The%20image%20highlights%20cultural%20heritage%20and%20authentic%20artisanal%20work%20with%20natural%20lighting%20and%20focus%20on%20the%20detailed%20handiwork.&width=300&height=200&seq=12356&orientation=landscape" alt="Maasai beadwork craftsmanship" class="rounded-lg h-40 w-full object-cover object-top" loading="lazy">
+                    <img src="https://readdy.ai/api/search-image?query=Trexx%20Adventures%20team%20members%20in%20branded%20green%20shirts%20gathered%20together%20smiling%20at%20the%20camera%2C%20standing%20in%20front%20of%20a%20safari%20vehicle%20with%20company%20logo.%20The%20image%20shows%20a%20diverse%2C%20professional%20team%20with%20a%20friendly%2C%20welcoming%20appearance%20against%20a%20natural%20Kenyan%20backdrop.&width=300&height=400&seq=12357&orientation=portrait" alt="Trexx Adventures team with safari vehicle" class="rounded-lg h-64 w-full object-cover object-top" loading="lazy">
                 </div>
             </div>
         </div>
@@ -467,66 +469,42 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Adventurers Say</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">Hear from travelers who have experienced the magic of Kenya with Trexx Adventures.</p>
+                <p class="text-gray-600 max-w-3xl mx-auto">Hear from travelers who explored Kenya with Trexx Adventures.</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="text-secondary">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                        </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
+                    <div class="flex items-center mb-4 text-secondary">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-6">"Our safari with Trexx Adventures exceeded all expectations. Our guide James was incredibly knowledgeable about wildlife and took us to spots where we saw all the Big Five! The accommodations were comfortable and the entire experience was seamless."</p>
+                    <p class="text-gray-600 mb-6">"The Maasai Mara safari exceeded expectations. Guide James showed us all the Big Five!"</p>
                     <div class="flex items-center">
-                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20smiling%20middle-aged%20Caucasian%20woman%20with%20shoulder-length%20brown%20hair%20against%20a%20neutral%20background.%20The%20image%20has%20natural%20lighting%2C%20shows%20genuine%20expression%2C%20and%20has%20a%20clean%2C%20professional%20appearance%20suitable%20for%20a%20testimonial.&width=60&height=60&seq=12358&orientation=squarish" alt="Sarah Mitchell" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20smiling%20middle-aged%20Caucasian%20woman%20with%20shoulder-length%20brown%20hair%20against%20a%20neutral%20background.%20The%20image%20has%20natural%20lighting%2C%20shows%20genuine%20expression%2C%20and%20has%20a%20clean%2C%20professional%20appearance%20suitable%20for%20a%20testimonial.&width=60&height=60&seq=12358&orientation=squarish" alt="Sarah Mitchell" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy">
                         <div>
                             <h4 class="font-bold">Sarah Mitchell</h4>
                             <p class="text-gray-600 text-sm">London, UK</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="text-secondary">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                        </div>
+                <div class="testimonial-slide bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
+                    <div class="flex items-center mb-4 text-secondary">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-6">"The Mount Kenya trekking expedition was challenging but incredibly rewarding. Our guides were supportive and encouraging, and the views from the top were absolutely breathtaking. This was truly a once-in-a-lifetime experience!"</p>
+                    <p class="text-gray-600 mb-6">"Mount Kenya trekking was rewarding. The views were breathtaking, and the guides were superb!"</p>
                     <div class="flex items-center">
-                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20smiling%20Asian%20man%20in%20his%2030s%20with%20short%20black%20hair%20wearing%20a%20casual%20button-up%20shirt%20against%20a%20neutral%20background.%20The%20image%20has%20natural%20lighting%2C%20shows%20genuine%20expression%2C%20and%20has%20a%20clean%2C%20professional%20appearance%20suitable%20for%20a%20testimonial.&width=60&height=60&seq=12359&orientation=squarish" alt="David Chen" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20smiling%20Asian%20man%20in%20his%2030s%20with%20short%20black%20hair%20wearing%20a%20casual%20button-up%20shirt%20against%20a%20neutral%20background.%20The%20image%20has%20natural%20lighting%2C%20shows%20genuine%20expression%2C%20and%20has%20a%20clean%2C%20professional%20appearance%20suitable%20for%20a%20testimonial.&width=60&height=60&seq=12359&orientation=squarish" alt="David Chen" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy">
                         <div>
                             <h4 class="font-bold">David Chen</h4>
                             <p class="text-gray-600 text-sm">Toronto, Canada</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="text-secondary">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                        </div>
+                <div class="testimonial-slide bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
+                    <div class="flex items-center mb-4 text-secondary">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-6">"Our family cultural tour was the highlight of our trip to Kenya. Our children learned so much about Maasai traditions, and the community visit felt authentic and respectful. Trexx arranged everything perfectly for our family of five."</p>
+                    <p class="text-gray-600 mb-6">"The cultural tour was perfect for our family. The Maasai visit was authentic and educational."</p>
                     <div class="flex items-center">
-                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20smiling%20African%20American%20woman%20in%20her%2040s%20with%20natural%20hair%20against%20a%20neutral%20background.%20The%20image%20has%20natural%20lighting%2C%20shows%20genuine%20expression%2C%20and%20has%20a%20clean%2C%20professional%20appearance%20suitable%20for%20a%20testimonial.&width=60&height=60&seq=12360&orientation=squarish" alt="Nicole Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20smiling%20African%20American%20woman%20in%20her%2040s%20with%20natural%20hair%20against%20a%20neutral%20background.%20The%20image%20has%20natural%20lighting%2C%20shows%20genuine%20expression%2C%20and%20has%20a%20clean%20professional%20appearance%20suitable%20for%20a%20testimonial.&width=60&height=60&seq=12360&orientation=squarish" alt="Nicole Johnson" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy">
                         <div>
                             <h4 class="font-bold">Nicole Johnson</h4>
                             <p class="text-gray-600 text-sm">Chicago, USA</p>
@@ -536,19 +514,17 @@
             </div>
         </div>
     </section>
+
     <!-- CTA Section -->
     <section class="py-16 md:py-24 bg-primary text-white">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Kenyan Adventure?</h2>
-            <p class="text-xl opacity-90 max-w-3xl mx-auto mb-8">Contact us today to plan your personalized journey through Kenya's breathtaking landscapes and vibrant cultures.</p>
+            <p class="text-xl opacity-90 max-w-3xl mx-auto mb-8">Contact us to plan your personalized journey through Kenya’s landscapes and cultures.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="tel:0715135141" class="bg-white text-primary px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap flex items-center">
-                    <div class="w-6 h-6 flex items-center justify-center mr-2">
-                        <i class="ri-phone-line"></i>
-                    </div>
-                    Call: 0715135141
+                <a href="tel:+254715135141" class="bg-white text-primary px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition flex items-center">
+                    <i class="ri-phone-line mr-2"></i>Call: +254 715 135 141
                 </a>
-                <a href="#contact" class="bg-secondary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">Contact Us</a>
+                <a href="contact.html" class="bg-secondary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition">Contact Us</a>
             </div>
         </div>
     </section>
@@ -558,77 +534,72 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">Have questions or ready to book your adventure? Reach out to our friendly team.</p>
+                <p class="text-gray-600 max-w-3xl mx-auto">Ready to book your adventure? Reach out to our team.</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Contact Form -->
                 <div class="bg-white p-8 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
-                    <form>
+                    <form id="contact-form">
                         <div class="mb-6">
                             <label for="name" class="block text-gray-700 mb-2">Full Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your name">
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Your name" required>
+                            <span class="text-red-500 text-sm hidden" id="name-error">Name is required</span>
                         </div>
                         <div class="mb-6">
                             <label for="email" class="block text-gray-700 mb-2">Email Address</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your email">
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Your email" required>
+                            <span class="text-red-500 text-sm hidden" id="email-error">Valid email is required</span>
                         </div>
                         <div class="mb-6">
                             <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your phone number">
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Your phone number" required>
+                            <span class="text-red-500 text-sm hidden" id="phone-error">Valid phone number is required</span>
                         </div>
                         <div class="mb-6">
                             <label for="experience" class="block text-gray-700 mb-2">Interested In</label>
                             <div class="relative">
-                                <select id="experience" class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:border-primary pr-8">
+                                <select id="experience" name="experience" class="w-full px-4 py-3 border border-gray-300 rounded appearance-none pr-8" required>
                                     <option value="">Select an experience</option>
                                     <option value="safari">Wildlife Safari</option>
                                     <option value="hiking">Hiking & Trekking</option>
                                     <option value="cultural">Cultural Tours</option>
                                     <option value="custom">Custom Adventure</option>
                                 </select>
-                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                    <i class="ri-arrow-down-s-line text-gray-400"></i>
-                                </div>
+                                <i class="ri-arrow-down-s-line absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                             </div>
+                            <span class="text-red-500 text-sm hidden" id="experience-error">Please select an experience</span>
                         </div>
                         <div class="mb-6">
                             <label for="message" class="block text-gray-700 mb-2">Your Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Tell us about your travel plans or questions"></textarea>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded" placeholder="Tell us about your travel plans" required></textarea>
+                            <span class="text-red-500 text-sm hidden" id="message-error">Message is required</span>
                         </div>
                         <div class="mb-6">
                             <label class="custom-checkbox flex items-center">
-                                <input type="checkbox" class="hidden">
+                                <input type="checkbox" name="newsletter">
                                 <span class="checkmark"></span>
-                                <span class="ml-7 text-gray-700">Subscribe to our newsletter for travel tips and exclusive offers</span>
+                                <span class="ml-7 text-gray-700">Subscribe to our newsletter</span>
                             </label>
                         </div>
-                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">Send Message</button>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition">Send Message</button>
                     </form>
                 </div>
-                
-                <!-- Contact Information -->
                 <div>
                     <div class="bg-white p-8 rounded-lg shadow-md mb-8">
                         <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                        <i class="ri-phone-line"></i>
-                                    </div>
+                                    <i class="ri-phone-line text-primary"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">Phone</h4>
-                                    <a href="tel:0715135141" class="text-gray-600 hover:text-primary">0715135141</a>
+                                    <a href="tel:+254715135141" class="text-gray-600 hover:text-primary">+254 715 135 141</a>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                        <i class="ri-mail-line"></i>
-                                    </div>
+                                    <i class="ri-mail-line text-primary"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">Email</h4>
@@ -637,9 +608,7 @@
                             </div>
                             <div class="flex items-start">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                        <i class="ri-map-pin-line"></i>
-                                    </div>
+                                    <i class="ri-map-pin-line text-primary"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">Location</h4>
@@ -648,39 +617,35 @@
                             </div>
                             <div class="flex items-start">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <div class="w-6 h-6 flex items-center justify-center text-primary">
-                                        <i class="ri-time-line"></i>
-                                    </div>
+                                    <i class="ri-time-line text-primary"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1">Office Hours</h4>
-                                    <p class="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
-                                    <p class="text-gray-600">Saturday: 9:00 AM - 4:00 PM</p>
+                                    <p class="text-gray-600">Mon-Fri: 8:00 AM - 6:00 PM</p>
+                                    <p class="text-gray-600">Sat: 9:00 AM - 4:00 PM</p>
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="mt-8">
                             <h4 class="font-bold mb-4">Follow Us</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <a href="https://facebook.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
                                     <i class="ri-facebook-fill"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <a href="https://instagram.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
                                     <i class="ri-instagram-line"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <a href="https://x.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
                                     <i class="ri-twitter-x-line"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <a href="https://youtube.com/trexxadventures" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
                                     <i class="ri-youtube-line"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="bg-white rounded-lg shadow-md overflow-hidden h-80">
-                        <img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Map" class="w-full h-full object-cover">
+                        <img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Map of Tatu City, Ruiru, Kenya" class="w-full h-full object-cover" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -691,190 +656,197 @@
     <footer class="bg-gray-900 text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                <!-- Company Info -->
                 <div>
-                    <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 inline-block">Trexx</a>
-                    <p class="text-gray-400 mb-6">Unleashing authentic Kenyan adventures since 2018. We're dedicated to creating unforgettable experiences while preserving Kenya's natural and cultural heritage.</p>
+                    <a href="index.html" class="text-3xl font-['Pacifico'] text-white mb-6 inline-block">Trexx</a>
+                    <p class="text-gray-400 mb-6">Authentic Kenyan adventures since 2018, preserving Kenya’s natural and cultural heritage.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                        <a href="https://facebook.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
                             <i class="ri-facebook-fill"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                        <a href="https://instagram.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
                             <i class="ri-instagram-line"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                        <a href="https://x.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
                             <i class="ri-twitter-x-line"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                        <a href="https://youtube.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
                             <i class="ri-youtube-line"></i>
                         </a>
                     </div>
                 </div>
-                
-                <!-- Quick Links -->
                 <div>
                     <h3 class="text-xl font-bold mb-6">Quick Links</h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#experiences" class="text-gray-400 hover:text-white transition">Experiences</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms & Conditions</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="experiences.html" class="text-gray-400 hover:text-white transition">Experiences</a></li>
+                        <li><a href="plan.html" class="text-gray-400 hover:text-white transition">Plan Your Adventure</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="faqs.html" class="text-gray-400 hover:text-white transition">FAQs</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
-                
-                <!-- Popular Experiences -->
                 <div>
                     <h3 class="text-xl font-bold mb-6">Popular Experiences</h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Maasai Mara Safari</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Mount Kenya Trekking</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cultural Village Tours</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Diani Beach Getaway</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Corporate Team Building</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Nairobi Day Trips</a></li>
+                        <li><a href="tours.html#maasai-mara" class="text-gray-400 hover:text-white transition">Maasai Mara Safari</a></li>
+                        <li><a href="tours.html#mount-kenya" class="text-gray-400 hover:text-white transition">Mount Kenya Trekking</a></li>
+                        <li><a href="tours.html#cultural" class="text-gray-400 hover:text-white transition">Cultural Village Tours</a></li>
+                        <li><a href="tours.html#diani-beach" class="text-gray-400 hover:text-white transition">Diani Beach Getaway</a></li>
+                        <li><a href="tours.html#teambuilding" class="text-gray-400 hover:text-white transition">Corporate Team Building</a></li>
+                        <li><a href="tours.html#nairobi" class="text-gray-400 hover:text-white transition">Nairobi Day Trips</a></li>
                     </ul>
                 </div>
-                
-                <!-- Newsletter -->
                 <div>
                     <h3 class="text-xl font-bold mb-6">Newsletter</h3>
-                    <p class="text-gray-400 mb-4">Subscribe to receive travel tips and exclusive offers.</p>
+                    <p class="text-gray-400 mb-4">Subscribe for travel tips and exclusive offers.</p>
                     <form class="mb-4">
                         <div class="flex">
-                            <input type="email" placeholder="Your email address" class="px-4 py-3 w-full rounded-l-button border-none focus:outline-none text-gray-800">
-                            <button type="submit" class="bg-primary text-white px-4 py-3 rounded-r-button hover:bg-opacity-90 transition whitespace-nowrap">Subscribe</button>
+                            <input type="email" placeholder="Your email address" class="px-4 py-3 w-full rounded-l-button border-none text-gray-800">
+                            <button type="submit" class="bg-primary text-white px-4 py-3 rounded-r-button hover:bg-opacity-90 transition">Subscribe</button>
                         </div>
                     </form>
                     <div>
                         <h4 class="font-bold mb-3">Contact Us</h4>
                         <p class="flex items-center text-gray-400 mb-2">
-                            <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                <i class="ri-phone-line"></i>
-                            </div>
-                            <a href="tel:0715135141" class="hover:text-white">0715135141</a>
+                            <i class="ri-phone-line mr-2"></i>
+                            <a href="tel:+254715135141" class="hover:text-white">+254 715 135 141</a>
                         </p>
                         <p class="flex items-center text-gray-400">
-                            <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                <i class="ri-mail-line"></i>
-                            </div>
+                            <i class="ri-mail-line mr-2"></i>
                             <a href="mailto:info@trexxadventures.com" class="hover:text-white">info@trexxadventures.com</a>
                         </p>
                     </div>
                 </div>
             </div>
-            
             <div class="pt-8 border-t border-gray-800 text-center">
                 <div class="flex justify-center space-x-6 mb-6">
-                    <div class="w-10 h-6 flex items-center justify-center">
-                        <i class="ri-visa-fill text-2xl text-gray-400"></i>
-                    </div>
-                    <div class="w-10 h-6 flex items-center justify-center">
-                        <i class="ri-mastercard-fill text-2xl text-gray-400"></i>
-                    </div>
-                    <div class="w-10 h-6 flex items-center justify-center">
-                        <i class="ri-paypal-fill text-2xl text-gray-400"></i>
-                    </div>
-                    <div class="w-10 h-6 flex items-center justify-center">
-                        <i class="ri-bank-card-fill text-2xl text-gray-400"></i>
-                    </div>
+                    <i class="ri-visa-fill text-2xl text-gray-400"></i>
+                    <i class="ri-mastercard-fill text-2xl text-gray-400"></i>
+                    <i class="ri-paypal-fill text-2xl text-gray-400"></i>
+                    <i class="ri-bank-card-fill text-2xl text-gray-400"></i>
                 </div>
-                <p class="text-gray-500">&copy; 2025 Trexx Adventures. All rights reserved.</p>
+                <p class="text-gray-500">© 2025 Trexx Adventures. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Chat Button -->
-    <a href="https://wa.me/0715135141" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition">
-        <div class="w-8 h-8 flex items-center justify-center">
-            <i class="ri-whatsapp-line text-2xl"></i>
-        </div>
+    <a href="https://wa.me/+254715135141?text=Hi%20Trexx%20Adventures,%20I%27m%20interested%20in%20booking%20an%20adventure!" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition" aria-label="Chat on WhatsApp">
+        <i class="ri-whatsapp-line text-2xl"></i>
     </a>
 
-    <!-- Scripts -->
-    <script id="navigation-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scrolling for anchor links
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const experiencesToggle = document.getElementById('mobile-experiences-toggle');
+            const experiencesMenu = document.getElementById('mobile-experiences');
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                mobileMenu.classList.toggle('-translate-x-full');
+            });
+            experiencesToggle.addEventListener('click', () => {
+                experiencesMenu.classList.toggle('hidden');
+            });
+
+            // Smooth Scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const targetId = this.getAttribute('href');
+                    const targetId = anchor.getAttribute('href');
                     if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
+                    const target = document.querySelector(targetId);
+                    if (target) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: target.offsetTop - 80,
                             behavior: 'smooth'
                         });
                     }
                 });
             });
-        });
-    </script>
 
-    <script id="destinations-carousel-script">
-        document.addEventListener('DOMContentLoaded', function() {
+            // Destinations Carousel
             const container = document.getElementById('destinations-container');
             const prevBtn = document.getElementById('prev-destination');
             const nextBtn = document.getElementById('next-destination');
-            
-            if (container && prevBtn && nextBtn) {
-                const scrollAmount = 340; // Width of card + gap
-                
-                prevBtn.addEventListener('click', function() {
-                    container.scrollBy({
-                        left: -scrollAmount,
-                        behavior: 'smooth'
-                    });
-                });
-                
-                nextBtn.addEventListener('click', function() {
-                    container.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
-                });
+            const dots = document.querySelectorAll('.dot');
+            let currentIndex = 0;
+            const scrollAmount = 340;
+            function updateDots() {
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
             }
-        });
-    </script>
-
-    <script id="form-interactions-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            // Custom checkbox functionality
-            const checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    const checkmark = this.nextElementSibling;
-                    if (this.checked) {
-                        checkmark.classList.add('checked');
-                    } else {
-                        checkmark.classList.remove('checked');
-                    }
-                });
+            function scrollToIndex(index) {
+                currentIndex = Math.max(0, Math.min(index, dots.length - 1));
+                container.scrollTo({ left: currentIndex * scrollAmount, behavior: 'smooth' });
+                updateDots();
+            }
+            prevBtn.addEventListener('click', () => scrollToIndex(currentIndex - 1));
+            nextBtn.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => scrollToIndex(i));
             });
-            
-            // Form submission
-            const contactForm = document.querySelector('#contact form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Simulate form submission
-                    const submitButton = this.querySelector('button[type="submit"]');
-                    const originalText = submitButton.textContent;
-                    
+            setInterval(() => scrollToIndex((currentIndex + 1) % dots.length), 5000);
+
+            // Testimonials Slider
+            const slides = document.querySelectorAll('.testimonial-slide');
+            let currentSlide = 0;
+            function showSlide(index) {
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+            }
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            setInterval(nextSlide, 5000);
+            showSlide(currentSlide);
+
+            // Form Validation
+            const form = document.getElementById('contact-form');
+            const fields = ['name', 'email', 'phone', 'experience', 'message'];
+            function validateField(field) {
+                const input = document.getElementById(field);
+                const error = document.getElementById(`${field}-error`);
+                let isValid = true;
+                if (field === 'email') {
+                    isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+                } else if (field === 'phone') {
+                    isValid = /^\+?\d{10,12}$/.test(input.value.replace(/\s/g, ''));
+                } else {
+                    isValid = input.value.trim() !== '';
+                }
+                error.classList.toggle('hidden', isValid);
+                input.classList.toggle('border-red-500', !isValid);
+                return isValid;
+            }
+            fields.forEach(field => {
+                document.getElementById(field).addEventListener('input', () => validateField(field));
+            });
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+                fields.forEach(field => {
+                    if (!validateField(field)) isValid = false;
+                });
+                if (isValid) {
+                    const submitButton = form.querySelector('button[type="submit"]');
                     submitButton.textContent = 'Sending...';
                     submitButton.disabled = true;
-                    
                     setTimeout(() => {
-                        alert('Thank you for your message! We will get back to you soon.');
-                        this.reset();
-                        submitButton.textContent = originalText;
+                        alert('Thank you for your message! We’ll get back to you soon.');
+                        form.reset();
+                        fields.forEach(field => document.getElementById(`${field}-error`).classList.add('hidden'));
+                        submitButton.textContent = 'Send Message';
                         submitButton.disabled = false;
                     }, 1500);
-                });
-            }
+                }
+            });
+
+            // Lazy Loading
+            document.querySelectorAll('img').forEach(img => img.setAttribute('loading', 'lazy'));
         });
     </script>
 </body>

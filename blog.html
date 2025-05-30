@@ -1,0 +1,393 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read the Trexx Adventures blog for Kenya safari tips, Mount Kenya hiking guides, cultural insights, and travel advice. Plan your Kenyan adventure today!">
+    <meta name="keywords" content="Kenya safari blog, Mount Kenya hiking tips, Maasai culture, Kenya travel tips, Trexx Adventures, Tatu City tours">
+    <meta name="author" content="Trexx Adventures">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Kenya Travel Blog - Trexx Adventures">
+    <meta property="og:description" content="Discover expert tips on Kenya safaris, hiking, and cultural tours with Trexx Adventures’ blog. Get inspired for your next adventure!">
+    <meta property="og:image" content="https://www.trexxadventures.co.ke/trexxadventures.png">
+    <meta property="og:url" content="https://www.trexxadventures.co.ke/blog.html">
+    <link rel="canonical" href="https://www.trexxadventures.co.ke/blog.html">
+    <link rel="sitemap" href="/sitemap.xml">
+    <title>Kenya Travel Blog - Trexx Adventures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#2C5F2D', secondary: '#FFB347' },
+                    borderRadius: {
+                        'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px',
+                        'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+    [{
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "The Great Migration: Maasai Mara Safari Guide",
+        "datePublished": "2025-05-15",
+        "author": {"@type": "Person", "name": "Jane Kamau"},
+        "image": "https://readdy.ai/api/search-image?query=Maasai%20Mara%20National%20Reserve%20in%20Kenya%20with%20vast%20golden%20savannah%20plains%20dotted%20with%20acacia%20trees%2C%20wildlife%20including%20lions%20and%20zebras%2C%20and%20a%20dramatic%20sky%20during%20golden%20hour.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20beauty%20of%20this%20iconic%20safari%20destination.&width=400&height=300&seq=12349&orientation=landscape",
+        "description": "Learn about the Great Migration in Maasai Mara, the best times to visit, and what to expect on a Trexx Adventures safari.",
+        "publisher": {"@type": "Organization", "name": "Trexx Adventures", "url": "https://www.trexxadventures.co.ke"}
+    }, {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Top 5 Tips for Hiking Mount Kenya",
+        "datePublished": "2025-05-10",
+        "author": {"@type": "Person", "name": "John Mwangi"},
+        "image": "https://readdy.ai/api/search-image?query=Mount%20Kenya%20national%20park%20with%20snow-capped%20peaks%20rising%20above%20lush%20forests%20and%20alpine%20meadows%2C%20clear%20blue%20sky%20with%20wispy%20clouds%2C%20and%20a%20hiking%20trail%20visible%20in%20the%20foreground.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20majestic%20beauty%20of%20Africas%20second-highest%20mountain.&width=400&height=300&seq=12350&orientation=landscape",
+        "description": "Prepare for your Mount Kenya trek with these essential tips from Trexx Adventures, including gear and fitness advice.",
+        "publisher": {"@type": "Organization", "name": "Trexx Adventures", "url": "https://www.trexxadventures.co.ke"}
+    }]
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+        .hero-section {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0) 100%), url('lion.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        .filter-btn.active { background-color: #2C5F2D; color: white; }
+        .mobile-menu { transition: transform 0.3s ease-in-out; }
+        .mobile-menu.open { transform: translateX(0); }
+        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 768px) { .hero-section { background-attachment: scroll; } }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-['Pacifico'] text-primary">Trexx</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="font-medium text-gray-800 hover:text-primary">Home</a>
+                <div class="relative group">
+                    <button class="font-medium text-gray-800 hover:text-primary flex items-center">
+                        Tours
+                        <i class="ri-arrow-down-s-line ml-1"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden group-hover:block">
+                        <a href="tours.html#safaris" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Wildlife Safaris</a>
+                        <a href="tours.html#hiking" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Hiking & Trekking</a>
+                        <a href="tours.html#cultural" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cultural Tours</a>
+                        <a href="tours.html#team" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Team Adventures</a>
+                    </div>
+                </div>
+                <a href="plan.html" class="font-medium text-gray-800 hover:text-primary">Plan Your Adventures</a>
+                <a href="gallery.html" class="font-medium text-gray-800 hover:text-primary">Gallery</a>
+                <a href="blog.html" class="font-medium text-gray-800 hover:text-primary border-b-2 border-primary">Blog</a>
+                <a href="about.html" class="font-medium text-gray-800 hover:text-primary">About Us</a>
+                <a href="contact.html" class="font-medium text-gray-800 hover:text-primary">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="tel:+254715135141" class="hidden md:flex items-center text-gray-800 hover:text-primary">
+                    <i class="ri-phone-line mr-2"></i>+254 715 135 141
+                </a>
+                <a href="booking.html" class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition">Book Now</a>
+            </div>
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-800" id="mobile-menu-toggle">
+                <i class="ri-menu-line text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu fixed top-16 left-0 w-full bg-white shadow-md transform -translate-x-full md:hidden">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="index.html" class="font-medium text-gray-800 hover:text-primary">Home</a>
+                <div>
+                    <button class="font-medium text-gray-800 hover:text-primary flex items-center w-full" id="mobile-tours-toggle">
+                        Tours
+                        <i class="ri-arrow-down-s-line ml-1"></i>
+                    </button>
+                    <div id="mobile-tours" class="hidden pl-4 space-y-2">
+                        <a href="tours.html#safaris" class="block text-gray-800 hover:text-primary">Wildlife Safaris</a>
+                        <a href="tours.html#hiking" class="block text-gray-800 hover:text-primary">Hiking & Trekking</a>
+                        <a href="tours.html#cultural" class="block text-gray-800 hover:text-primary">Cultural Tours</a>
+                        <a href="tours.html#team" class="block text-gray-800 hover:text-primary">Team Adventures</a>
+                    </div>
+                </div>
+                <a href="plan.html" class="font-medium text-gray-800 hover:text-primary">Plan Your Adventures</a>
+                <a href="gallery.html" class="font-medium text-gray-800 hover:text-primary">Gallery</a>
+                <a href="blog.html" class="font-medium text-gray-800 hover:text-primary">Blog</a>
+                <a href="about.html" class="font-medium text-gray-800 hover:text-primary">About Us</a>
+                <a href="contact.html" class="font-medium text-gray-800 hover:text-primary">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-[50vh] flex items-center pt-16 fade-in" id="home">
+        <div class="container mx-auto px-4 w-full">
+            <div class="max-w-2xl py-12 md:py-20">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">Trexx Adventures Blog</h1>
+                <p class="text-lg text-white mb-8 opacity-90">Get inspired with our latest tips, guides, and stories on Kenya safaris, hiking, and cultural adventures.</p>
+                <a href="#blog" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition">Read Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-16 md:py-24 bg-gray-50" id="blog">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Travel Insights & Tips</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Explore our blog for expert advice on planning your Kenyan adventure, from safaris to cultural tours near Tatu City.</p>
+            </div>
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition active" data-filter="all">All</button>
+                <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="safaris">Safaris</button>
+                <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="hiking">Hiking</button>
+                <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="culture">Culture</button>
+                <button class="filter-btn px-6 py-2 bg-gray-200 text-gray-800 rounded-button font-medium hover:bg-primary hover:text-white transition" data-filter="tips">Travel Tips</button>
+            </div>
+            <!-- Blog Posts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-category="safaris">
+                    <img src="https://readdy.ai/api/search-image?query=Maasai%20Mara%20National%20Reserve%20in%20Kenya%20with%20vast%20golden%20savannah%20plains%20dotted%20with%20acacia%20trees%2C%20wildlife%20including%20lions%20and%20zebras%2C%20and%20a%20dramatic%20sky%20during%20golden%20hour.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20beauty%20of%20this%20iconic%20safari%20destination.&width=400&height=300&seq=12349&orientation=landscape" alt="Great Migration in Maasai Mara" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">May 15, 2025 • Jane Kamau • Safaris</span>
+                        <h3 class="text-xl font-bold mb-2">The Great Migration: Maasai Mara Safari Guide</h3>
+                        <p class="text-gray-600 mb-4">Witness the world’s largest wildlife spectacle in Maasai Mara. Learn the best times to visit, what to pack, and how Trexx Adventures ensures an unforgettable safari. From wildebeest crossings to Big Five sightings, this guide covers it all.</p>
+                        <a href="tours.html#safaris" class="text-primary font-medium hover:underline">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-category="hiking">
+                    <img src="https://readdy.ai/api/search-image?query=Mount%20Kenya%20national%20park%20with%20snow-capped%20peaks%20rising%20above%20lush%20forests%20and%20alpine%20meadows%2C%20clear%20blue%20sky%20with%20wispy%20clouds%2C%20and%20a%20hiking%20trail%20visible%20in%20the%20foreground.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20majestic%20beauty%20of%20Africas%20second-highest%20mountain.&width=400&height=300&seq=12350&orientation=landscape" alt="Mount Kenya hiking trail" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">May 10, 2025 • John Mwangi • Hiking</span>
+                        <h3 class="text-xl font-bold mb-2">Top 5 Tips for Hiking Mount Kenya</h3>
+                        <p class="text-gray-600 mb-4">Conquer Africa’s second-highest peak with our expert tips. From choosing the right gear to training for altitude, Trexx Adventures shares essential advice for a successful Mount Kenya trek. Start planning your adventure today!</p>
+                        <a href="tours.html#hiking" class="text-primary font-medium hover:underline">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-category="safaris">
+                    <img src="https://readdy.ai/api/search-image?query=Amboseli%20National%20Park%20in%20Kenya%20with%20Mount%20Kilimanjaro%20rising%20majestically%20in%20the%20background%2C%20elephants%20roaming%20across%20open%20plains%2C%20and%20acacia%20trees%20creating%20iconic%20African%20silhouettes.%20The%20image%20shows%20the%20perfect%20juxtaposition%20of%20wildlife%20and%20Africas%20highest%20mountain%20with%20its%20snow-capped%20peak%20visible%20against%20a%20clear%20blue%20sky.%20The%20composition%20captures%20the%20essence%20of%20this%20famous%20Kenyan%20safari%20destination.&width=400&height=300&seq=12353&orientation=landscape" alt="Elephants in Amboseli" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">May 8, 2025 • Sarah Wanjiku • Safaris</span>
+                        <h3 class="text-xl font-bold mb-2">Why Amboseli is a Must-Visit Safari Destination</h3>
+                        <p class="text-gray-600 mb-4">Explore Amboseli’s elephant herds and stunning Kilimanjaro views. Discover why this national park is perfect for a Trexx Adventures safari, with tips on photography and wildlife spotting.</p>
+                        <a href="tours.html#safaris" class="text-primary font-medium hover:underline">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-category="culture">
+                    <img src="https://readdy.ai/api/search-image?query=Authentic%20Kenyan%20cultural%20experience%20showing%20Maasai%20warriors%20in%20traditional%20red%20clothing%20performing%20a%20jumping%20dance%20ceremony%20against%20a%20natural%20backdrop%20of%20the%20savannah.%20The%20image%20captures%20vibrant%20colors%2C%20genuine%20cultural%20expression%2C%20and%20the%20connection%20between%20people%20and%20landscape%20in%20a%20respectful%2C%20non-exploitative%20way%20that%20highlights%20the%20rich%20heritage%20of%20Kenyas%20indigenous%20communities.&width=600&height=400&seq=12348&orientation=landscape" alt="Maasai cultural dance" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">May 5, 2025 • Mary Njoroge • Culture</span>
+                        <h3 class="text-xl font-bold mb-2">Exploring Maasai Culture: A Journey of Tradition</h3>
+                        <p class="text-gray-600 mb-4">Immerse yourself in Maasai traditions with Trexx Adventures. Learn about their vibrant culture, from dance to craftsmanship, and how to respectfully engage during a village tour.</p>
+                        <a href="tours.html#cultural" class="text-primary font-medium hover:underline">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-category="tips">
+                    <img src="https://readdy.ai/api/search-image?query=Nairobi%20National%20Park%20in%20Kenya%20with%20wildlife%20such%20as%20giraffes%20and%20zebras%20roaming%20freely%20against%20a%20backdrop%20of%20Nairobi%20city%20skyline.%20The%20image%20captures%20the%20unique%20juxtaposition%20of%20urban%20and%20wild%20landscapes%20with%20natural%20lighting%20and%20a%20professional%20composition%20highlighting%20the%20parks%20accessibility%20from%20Tatu%20City.&width=400&height=300&seq=12361&orientation=landscape" alt="Nairobi National Park" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">May 3, 2025 • Peter Kimani • Travel Tips</span>
+                        <h3 class="text-xl font-bold mb-2">Day Trips from Tatu City: Nairobi National Park</h3>
+                        <p class="text-gray-600 mb-4">Discover the ultimate day trip from Tatu City to Nairobi National Park. Learn what to see, how to plan, and why Trexx Adventures makes it seamless with guided tours.</p>
+                        <a href="tours.html#safaris" class="text-primary font-medium hover:underline">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300" data-category="tips">
+                    <img src="https://readdy.ai/api/search-image?query=Travel%20packing%20for%20a%20Kenya%20safari%20with%20a%20backpack%20filled%20with%20essentials%20like%20binoculars%2C%20sunscreen%2C%20and%20a%20hat%2C%20set%20against%20a%20savannah%20background.%20The%20image%20has%20a%20professional%2C%20high-quality%20look%20with%20natural%20lighting%20and%20composition%20that%20highlights%20the%20adventure%20theme.&width=400&height=300&seq=12371&orientation=landscape" alt="Safari packing essentials" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">May 1, 2025 • Esther Wambui • Travel Tips</span>
+                        <h3 class="text-xl font-bold mb-2">What to Pack for Your Kenya Adventure</h3>
+                        <p class="text-gray-600 mb-4">Pack smart for your Kenyan safari or hike with our ultimate checklist. From clothing to gear, Trexx Adventures helps you prepare for an unforgettable trip.</p>
+                        <a href="plan.html" class="text-primary font-medium hover:underline">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="contact.html" class="inline-block bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition">Plan Your Adventure</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="index.html" class="text-3xl font-['Pacifico'] text-white mb-6 inline-block">Trexx</a>
+                    <p class="text-gray-400 mb-6">Authentic Kenyan adventures since 2018, connecting travelers with nature and culture near Tatu City.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://instagram.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://x.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="https://youtube.com/trexxadventures" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="tours.html" class="text-gray-400 hover:text-white transition">Tours</a></li>
+                        <li><a href="plan.html" class="text-gray-400 hover:text-white transition">Plan Your Adventures</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Popular Tours</h3>
+                    <ul class="space-y-3">
+                        <li><a href="tours.html#maasai-mara" class="text-gray-400 hover:text-white transition">Maasai Mara Safari</a></li>
+                        <li><a href="tours.html#mount-kenya" class="text-gray-400 hover:text-white transition">Mount Kenya Trekking</a></li>
+                        <li><a href="tours.html#cultural" class="text-gray-400 hover:text-white transition">Cultural Village Tours</a></li>
+                        <li><a href="tours.html#diani-beach" class="text-gray-400 hover:text-white transition">Diani Beach Getaway</a></li>
+                        <li><a href="tours.html#team" class="text-gray-400 hover:text-white transition">Team Adventures</a></li>
+                        <li><a href="tours.html#nairobi" class="text-gray-400 hover:text-white transition">Nairobi Day Trips</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe for travel tips and exclusive offers.</p>
+                    <div class="mb-4 flex">
+                        <input type="email" placeholder="Your email address" class="px-4 py-3 w-full rounded-l-button border-none text-gray-800">
+                        <button type="submit" class="bg-primary text-white px-4 py-3 rounded-r-button hover:bg-opacity-90 transition">Subscribe</button>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-3">Contact Us</h4>
+                        <p class="flex items-center text-gray-400 mb-2">
+                            <i class="ri-phone-line mr-2"></i>
+                            <a href="tel:+254715135141" class="hover:text-white">+254 715 135 141</a>
+                        </p>
+                        <p class="flex items-center text-gray-400">
+                            <i class="ri-mail-line mr-2"></i>
+                            <a href="mailto:info@trexxadventures.com" class="hover:text-white">info@trexxadventures.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <i class="ri-visa-fill text-2xl text-gray-400"></i>
+                    <i class="ri-mastercard-fill text-2xl text-gray-400"></i>
+                    <i class="ri-paypal-fill text-2xl text-gray-400"></i>
+                    <i class="ri-bank-card-fill text-2xl text-gray-400"></i>
+                </div>
+                <p class="text-gray-500">© 2025 Trexx Adventures. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Chat Button -->
+    <a href="https://wa.me/+254715135141?text=Hi%20Trexx%20Adventures,%20I%27m%20inspired%20by%20your%20blog%20and%20want%20to%20book%20a%20tour!" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition" aria-label="Chat on WhatsApp">
+        <i class="ri-whatsapp-line text-2xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const toursToggle = document.getElementById('mobile-tours-toggle');
+            const toursMenu = document.getElementById('mobile-tours');
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                mobileMenu.classList.toggle('-translate-x-full');
+            });
+            toursToggle.addEventListener('click', () => {
+                toursMenu.classList.toggle('hidden');
+            });
+
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = anchor.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Blog Filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    blogCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        card.style.display = (filter === 'all' || filter === category) ? 'block' : 'none';
+                    });
+                });
+            });
+
+            // Lazy Loading
+            document.querySelectorAll('img').forEach(img => img.setAttribute('loading', 'lazy'));
+        });
+    </script>
+</body>
+</html>
